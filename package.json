@@ -1,0 +1,13 @@
+{
+  "name": "hw-market-briefing",
+  "version": "1.0.0",
+  "description": "한화투자증권 시장 브리핑",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^34.0.0"
+  }
+}

@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>유길상 PB · 시장 브리핑 2026.04.15</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0c10; --bg2:#111318; --bg3:#181c23; --bg4:#1e2229;
+    --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.12);
+    --text:#f0f2f5; --text2:#8a8f9a; --text3:#555b67;
+    --up:#ff6b3d; --up-bg:rgba(255,107,61,0.1); --up-border:rgba(255,107,61,0.3);
+    --dn:#4a9eff; --dn-bg:rgba(74,158,255,0.1); --dn-border:rgba(74,158,255,0.3);
+    --accent:#ff6b3d; --gold:#f0c060; --green:#4ecb8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(255,107,61,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,61,0.015) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+  .app{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:32px 24px;}
+
+  /* HEADER */
+  .header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  .header-logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff9c6e);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#fff;flex-shrink:0;}
+  .header-title h1{font-size:17px;font-weight:500;letter-spacing:-0.3px;}
+  .header-title p{font-size:11px;color:var(--text2);margin-top:2px;font-family:'DM Mono',monospace;}
+  .header-meta{text-align:right;}
+  .header-date{font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);}
+  #header-date-text{font-size:12px;}
+  .date-ctrl{display:flex;justify-content:flex-end;gap:8px;align-items:center;margin-top:6px;margin-bottom:6px;}
+  .period-toggle{display:inline-flex;align-items:center;border:1px solid var(--border);background:var(--bg3);border-radius:10px;overflow:hidden;}
+  .period-btn{border:0;background:transparent;color:var(--text2);font-size:12px;font-family:'DM Mono',monospace;padding:6px 10px;cursor:pointer;transition:background 0.15s,color 0.15s;}
+  .period-btn:hover{background:var(--bg4);color:var(--text);}
+  .period-btn.active{background:var(--accent);color:#fff;}
+  .upload-btn{border:1px solid var(--border);background:var(--bg3);color:var(--text2);border-radius:10px;padding:6px 10px;font-size:12px;font-family:'DM Mono',monospace;cursor:pointer;transition:background 0.15s,color 0.15s,border-color 0.15s;}
+  .upload-btn:hover{background:var(--bg4);color:var(--text);border-color:var(--border2);}
+  .date-input{background:var(--bg3);border:1px solid var(--border);color:var(--text2);border-radius:8px;padding:6px 10px;font-size:12px;font-family:'DM Mono',monospace;outline:none;}
+  .date-input:focus{border-color:var(--border2);}
+  .ai-badge{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid var(--up-border);color:var(--accent);background:var(--up-bg);font-family:'DM Mono',monospace;}
+  .ai-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+  /* METRICS */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+  .metric{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+  .metric:hover{border-color:var(--border2);}
+  .metric::before{content:attr(data-rank);position:absolute;right:12px;top:10px;font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);}
+  .metric-label{font-size:10px;color:var(--text2);letter-spacing:0.3px;margin-bottom:6px;text-transform:uppercase;}
+  .metric-value{font-size:22px;font-weight:700;letter-spacing:-0.5px;}
+  .metric-sub{font-size:10px;color:var(--text2);margin-top:4px;font-family:'DM Mono',monospace;}
+  .metric-value.up{color:var(--up);}
+
+  /* NAV */
+  .nav{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap;}
+  .nav-btn{padding:7px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all 0.15s;}
+  .nav-btn:hover{background:var(--bg3);color:var(--text);}
+  .nav-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+  /* PANELS */
+  .panel{display:none;}
+  .panel.active{display:block;animation:fadeIn 0.2s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+  /* LAYOUTS */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+
+  /* 급등급락 패널: 왼쪽 (KOSPI | KOSDAQ 2열 + 급락) + 오른쪽 뉴스 */
+  .top-layout{display:grid;grid-template-columns:1fr 390px;gap:16px;align-items:start;}
+  /* 급등 2열 (KOSPI / KOSDAQ) */
+  .rise-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+  /* 급락 2열 */
+  .fall-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+  /* CARD */
+  .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;transition:border-color 0.2s;}
+  .card:hover{border-color:var(--border2);}
+  .card-title{font-size:13px;font-weight:650;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .card-title .dot{width:5px;height:5px;border-radius:50%;}
+
+  /* STOCK ROWS */
+  .stock-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);}
+  .stock-row:last-child{border-bottom:none;}
+  .stock-row.clickable{cursor:pointer;border-radius:8px;padding:7px 7px;margin:0 -7px;border-bottom:1px solid var(--border);transition:background 0.15s;}
+  .stock-row.clickable:last-child{border-bottom:none;}
+  .stock-row.clickable:hover{background:var(--bg3);}
+  .stock-row.clickable.selected{background:var(--bg4);border-left:2px solid var(--accent) !important;padding-left:9px;margin-left:-9px;}
+  .stock-name{font-size:13px;font-weight:600;}
+  .stock-mkt{font-size:11px;color:var(--text3);margin-top:1px;font-family:'DM Mono',monospace;}
+  .stock-price{font-size:12px;font-family:'DM Mono',monospace;color:var(--text2);}
+  .badge-up{font-size:10px;font-family:'DM Mono',monospace;font-weight:500;color:var(--up);background:var(--up-bg);border:1px solid var(--up-border);border-radius:5px;padding:2px 6px;white-space:nowrap;}
+  .badge-dn{font-size:10px;font-family:'DM Mono',monospace;font-weight:500;color:var(--dn);background:var(--dn-bg);border:1px solid var(--dn-border);border-radius:5px;padding:2px 6px;white-space:nowrap;}
+
+  /* NEWS SIDE PANEL */
+  .news-panel{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;position:sticky;top:20px;transition:border-color 0.3s;}
+  .news-panel.lit{border-color:var(--up-border);}
+  .news-panel-header{padding:13px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg3);}
+  .news-panel-title{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;display:flex;align-items:center;gap:7px;}
+  .news-powered{font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:4px;}
+  .news-powered::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+  .news-stock-bar{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .news-stock-name{font-size:13px;font-weight:500;}
+  .news-stock-meta{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;}
+  .news-body{padding:14px 16px;min-height:300px;max-height:600px;overflow-y:auto;}
+  .news-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:280px;gap:10px;color:var(--text3);text-align:center;}
+  .news-empty-icon{font-size:22px;opacity:0.25;}
+  .news-empty-text{font-size:12px;line-height:1.7;}
+  .news-hint{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;}
+  .news-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:280px;gap:14px;}
+  .spinner{width:24px;height:24px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .loading-label{font-size:11px;color:var(--text2);font-family:'DM Mono',monospace;}
+  .ldots::after{content:'';animation:dots 1.4s steps(4,end) infinite;}
+  @keyframes dots{0%{content:'';}25%{content:'.';}50%{content:'..';}75%{content:'...';}100%{content:'';}}
+  .news-item{padding:13px 0;border-bottom:1px solid var(--border);animation:fadeIn 0.3s ease;}
+  .news-item:last-child{border-bottom:none;}
+  .news-tag{display:inline-block;font-size:14px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:6px;margin-bottom:8px;font-weight:800;letter-spacing:0.2px;}
+  .tag-news{background:var(--dn-bg);color:var(--dn);border:1px solid var(--dn-border);}
+  .tag-disc{background:rgba(240,192,96,0.1);color:var(--gold);border:1px solid rgba(240,192,96,0.3);}
+  .tag-analyst{background:rgba(78,203,138,0.1);color:var(--green);border:1px solid rgba(78,203,138,0.3);}
+  .news-headline{font-size:16px;font-weight:800;color:var(--text);line-height:1.5;margin-bottom:7px;letter-spacing:-0.3px;}
+  .news-summary{font-size:13px;color:var(--text2);line-height:1.8;}
+  /* 급등·급락 탭(오른쪽 뉴스 패널): 제목/배지/뉴스제목 크기 통일 */
+  #panel-top .news-panel-title{font-size:14px;font-weight:800;color:var(--text);}
+  #panel-top .news-panel .news-tag{font-size:14px;padding:4px 10px;border-radius:6px;}
+  #panel-top .news-panel .news-headline{font-size:14px;font-weight:800;letter-spacing:-0.2px;}
+  .news-date{font-size:10px;color:var(--text3);margin-top:5px;font-family:'DM Mono',monospace;}
+  .news-footer{font-size:10px;color:var(--text3);padding:10px 16px;border-top:1px solid var(--border);background:var(--bg3);line-height:1.5;font-family:'DM Mono',monospace;}
+  .news-error{padding:20px 16px;text-align:center;color:var(--text3);font-size:12px;line-height:1.7;}
+  .news-error strong{color:var(--text2);display:block;margin-bottom:6px;}
+
+  /* OTHER PANELS */
+  .section-title{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .flow-section-title{font-size:13px;color:var(--text);font-weight:700;letter-spacing:-0.2px;margin:18px 0 12px;display:flex;align-items:center;gap:10px;}
+  .flow-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .pb-section-title{font-size:13px;color:var(--text);font-weight:800;letter-spacing:-0.2px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .pb-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .theme-section-title{font-size:13px;color:var(--text);font-weight:800;letter-spacing:-0.2px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .theme-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .bar-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+  .bar-row:last-child{border-bottom:none;}
+  .bar-rank{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);width:16px;text-align:right;flex-shrink:0;}
+  .bar-name{font-size:12px;font-weight:500;width:110px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bar-track{flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:3px;}
+  .bar-fill.bar-up{background:linear-gradient(90deg,var(--up),#ff9c6e);}
+  .bar-fill.bar-flat{background:var(--dn);}
+  .bar-amount{font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);width:72px;text-align:right;flex-shrink:0;}
+  .bar-pct{width:50px;text-align:right;flex-shrink:0;}
+  .theme-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;min-height:210px;}
+  .theme-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .theme-name{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+  .theme-status{font-size:10px;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace;}
+  .status-strong{background:var(--up-bg);color:var(--up);border:1px solid var(--up-border);}
+  .status-mixed{background:rgba(240,192,96,0.1);color:var(--gold);border:1px solid rgba(240,192,96,0.3);}
+  .theme-stocks{display:flex;flex-direction:column;gap:6px;flex:1;}
+  .theme-stock-row{display:flex;justify-content:space-between;font-size:12px;}
+  .theme-stock-name{color:var(--text2);}
+  .theme-stock-pct{font-family:'DM Mono',monospace;font-weight:500;}
+  .theme-reason{margin-top:auto;padding:10px 12px;background:var(--bg3);border-radius:8px;border-left:2px solid var(--accent);font-size:12px;color:var(--text2);line-height:1.7;}
+  .summary{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:var(--text2);line-height:1.8;}
+  .summary strong{color:var(--text);font-weight:500;}
+  .summary .up-text{color:var(--up);font-weight:500;}
+  .donut-wrap{position:relative;height:160px;display:flex;align-items:center;justify-content:center;}
+  .donut-label{position:absolute;text-align:center;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .donut-label .dl-num{font-size:22px;font-weight:700;color:var(--up);font-family:'DM Mono',monospace;}
+  .donut-label .dl-sub{font-size:10px;color:var(--text2);}
+  .legend{display:flex;gap:14px;margin-top:10px;justify-content:center;}
+  .legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text2);}
+  .legend-dot{width:8px;height:8px;border-radius:2px;}
+  .broker-note{font-size:11px;color:var(--text3);padding:10px 14px;background:var(--bg3);border-radius:8px;margin-top:14px;font-family:'DM Mono',monospace;line-height:1.6;}
+
+  @media(max-width:1100px){.top-layout{grid-template-columns:1fr;}.rise-grid{grid-template-columns:1fr;}.fall-grid{grid-template-columns:1fr;}}
+  @media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr);}.grid2{grid-template-columns:1fr;}}
+  .earnings-grid{display:grid;grid-template-columns:120px 68px 1fr 76px 80px 80px;gap:0;font-size:11px;overflow-x:auto;}
+  @media(max-width:900px){.earnings-grid{grid-template-columns:100px 50px 1fr 60px 66px 68px;}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-logo">
+      <div class="logo-mark">HW</div>
+      <div class="header-title">
+        <h1>유길상 PB 시장 브리핑</h1>
+        <p>AI 자동 분석 리포트 · Daily Edition</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="date-ctrl">
+        <div class="period-toggle" role="group" aria-label="기간 선택">
+          <button type="button" class="period-btn active" data-period="daily">일</button>
+          <button type="button" class="period-btn" data-period="weekly">주간</button>
+        </div>
+        <button type="button" id="upload-xlsx-btn" class="upload-btn">엑셀 업로드</button>
+        <span class="ai-badge">AI 자동 생성</span>
+      </div>
+      <div class="header-date"><span id="header-date-text" style="cursor:pointer;">2026.04.15 (WED) · 전일 종가 기준</span></div>
+      <input id="report-date" class="date-input" type="date" aria-label="리포트 날짜 선택" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;" />
+      <input id="xlsx-input" type="file" accept=".xlsx,.xls" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;" />
+    </div>
+  </header>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric" data-rank="01"><div class="metric-label">KOSPI 평균 등락률</div><div class="metric-value up">+1.39%</div><div class="metric-sub">상승 671 · 하락 199 · 보합 80</div></div>
+    <div class="metric" data-rank="02"><div class="metric-label">KOSDAQ 평균 등락률</div><div class="metric-value up">+2.19%</div><div class="metric-sub">상승 1,284 · 하락 327 · 보합 212</div></div>
+    <div class="metric" data-rank="03"><div class="metric-label">거래대금 1위</div><div class="metric-value" style="font-size:16px;color:var(--text);">삼성전자</div><div class="metric-sub" style="color:var(--dn);">-2.43% · 3.94조</div></div>
+    <div class="metric" data-rank="04"><div class="metric-label">코스닥 거래대금 1위</div><div class="metric-value" style="font-size:16px;color:var(--text);">대한광통신</div><div class="metric-sub" style="color:var(--up);">+11.82% · 1.14조</div></div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showPanel('overview',this)">국내시황 요약</button>
+    <button class="nav-btn" onclick="showPanel('us',this)">미국시황 요약</button>
+    <button class="nav-btn" onclick="showPanel('top',this)">급등·급락</button>
+    <button class="nav-btn" onclick="showPanel('volume',this)">거래대금</button>
+    <button class="nav-btn" onclick="showPanel('flow',this)">기관·외국인 수급</button>
+    <button class="nav-btn" onclick="showPanel('theme',this)">테마 분석</button>
+    <button class="nav-btn" onclick="showPanel('news',this)">종목 뉴스 브리핑</button>
+    <button class="nav-btn" onclick="showPanel('broker',this)">AI추천</button>
+  </nav>
+
+  <!-- ══ PANEL: 시장 개요 ══ -->
+  <div class="panel active" id="panel-overview">
+    <div class="summary">
+      전일 코스피·코스닥 양 시장 <strong>강한 상승</strong>세. 코스닥 평균 <span class="up-text">+2.19%</span>로 코스피 상회.
+      <strong>SK하이닉스(+6.06%)</strong>·<strong>삼성전자(+2.74%)</strong>가 시장을 주도했으며,
+      <span class="up-text">엔비디아 CEO 광반도체 발언</span> 영향으로 반도체·광통신 관련주 동반 급등.
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--up);"></span>KOSPI 시장 현황</div>
+        <div class="donut-wrap"><canvas id="kospiChart" width="160" height="160"></canvas><div class="donut-label"><div class="dl-num">70.6%</div><div class="dl-sub">상승 비율</div></div></div>
+        <div class="legend"><div class="legend-item"><div class="legend-dot" style="background:var(--up);"></div>상승 671</div><div class="legend-item"><div class="legend-dot" style="background:var(--dn);"></div>하락 199</div><div class="legend-item"><div class="legend-dot" style="background:var(--bg3);border:1px solid var(--border2);"></div>보합 80</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>KOSDAQ 시장 현황</div>
+        <div class="donut-wrap"><canvas id="kosdaqChart" width="160" height="160"></canvas><div class="donut-label"><div class="dl-num" style="color:#4ecb8a;">70.4%</div><div class="dl-sub">상승 비율</div></div></div>
+        <div class="legend"><div class="legend-item"><div class="legend-dot" style="background:#4ecb8a;"></div>상승 1,284</div><div class="legend-item"><div class="legend-dot" style="background:var(--dn);"></div>하락 327</div><div class="legend-item"><div class="legend-dot" style="background:var(--bg3);border:1px solid var(--border2);"></div>보합 212</div></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--up);"></span>코스피 주요 종목 <span style="font-size:10px;color:var(--text3);font-weight:400;">거래대금 상위 10</span></div>
+        <div class="stock-row"><div><div class="stock-name">삼성전자</div><div class="stock-mkt">3.94조</div></div><div style="text-align:right;"><div class="stock-price">201,000</div><span class="badge-dn">-2.43%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">SK하이닉스</div><div class="stock-mkt">2.85조</div></div><div style="text-align:right;"><div class="stock-price">1,040,000</div><span class="badge-up">+1.27%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">대우건설</div><div class="stock-mkt">7,587억</div></div><div style="text-align:right;"><div class="stock-price">23,750</div><span class="badge-dn">-2.26%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">남선알미늄</div><div class="stock-mkt">5,250억</div></div><div style="text-align:right;"><div class="stock-price">2,865</div><span class="badge-up">+29.93%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">LS ELECTRIC</div><div class="stock-mkt">4,585억</div></div><div style="text-align:right;"><div class="stock-price">179,200</div><span class="badge-up">+13.71%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">한화에어로스페이스</div><div class="stock-mkt">3,980억</div></div><div style="text-align:right;"><div class="stock-price">1,530,000</div><span class="badge-up">+1.53%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">LIG넥스원</div><div class="stock-mkt">3,567억</div></div><div style="text-align:right;"><div class="stock-price">939,000</div><span class="badge-up">+1.95%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">현대차</div><div class="stock-mkt">3,056억</div></div><div style="text-align:right;"><div class="stock-price">478,500</div><span class="badge-dn">-2.25%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">대한해운</div><div class="stock-mkt">3,017억</div></div><div style="text-align:right;"><div class="stock-price">2,860</div><span class="badge-dn">-7.44%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">남해화학</div><div class="stock-mkt">3,003억</div></div><div style="text-align:right;"><div class="stock-price">9,390</div><span class="badge-up">+18.26%</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>코스닥 주요 종목 <span style="font-size:10px;color:var(--text3);font-weight:400;">거래대금 상위 10</span></div>
+        <div class="stock-row"><div><div class="stock-name">대한광통신</div><div class="stock-mkt">1.14조</div></div><div style="text-align:right;"><div class="stock-price">19,870</div><span class="badge-up">+11.82%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">세미파이브</div><div class="stock-mkt">5,105억</div></div><div style="text-align:right;"><div class="stock-price">36,500</div><span class="badge-up">+16.61%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">쏠리드</div><div class="stock-mkt">4,049억</div></div><div style="text-align:right;"><div class="stock-price">17,350</div><span class="badge-up">+1.58%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">우리로</div><div class="stock-mkt">3,115억</div></div><div style="text-align:right;"><div class="stock-price">9,990</div><span class="badge-up">+29.91%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">우리기술</div><div class="stock-mkt">2,105억</div></div><div style="text-align:right;"><div class="stock-price">21,100</div><span class="badge-up">+0.48%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">우리넷</div><div class="stock-mkt">2,078억</div></div><div style="text-align:right;"><div class="stock-price">16,900</div><span class="badge-up">+30.00%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">미래에셋벤처투자</div><div class="stock-mkt">1,981억</div></div><div style="text-align:right;"><div class="stock-price">29,950</div><span class="badge-up">+7.16%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">삼천당제약</div><div class="stock-mkt">1,913억</div></div><div style="text-align:right;"><div class="stock-price">526,000</div><span class="badge-up">+4.16%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">HPSP</div><div class="stock-mkt">1,776억</div></div><div style="text-align:right;"><div class="stock-price">41,400</div><span class="badge-dn">-9.11%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">ISC</div><div class="stock-mkt">1,694억</div></div><div style="text-align:right;"><div class="stock-price">216,500</div><span class="badge-dn">-15.92%</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: 급등·급락 ══ -->
+  <div class="panel" id="panel-top">
+    <div class="top-layout">
+
+      <!-- LEFT: 종목 목록 -->
+      <div>
+        <!-- 급등 섹션 제목 -->
+        <div class="section-title" style="margin-bottom:10px;">급등 TOP 10 — 종목 클릭 시 AI 뉴스·공시 조회</div>
+
+        <!-- KOSPI / KOSDAQ 급등 2열 -->
+        <div class="rise-grid">
+          <!-- KOSPI 급등 -->
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--up);"></span>KOSPI 급등</div>
+            <div class="stock-row clickable" onclick="loadNews(this,'주성코퍼레이션','KOSPI','+29.92%','2,310원','192억')"><div><div class="stock-name">주성코퍼레이션</div><div class="stock-mkt">192억</div></div><div style="text-align:right;"><div class="stock-price">2,310원</div><span class="badge-up">+29.92%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'성신양회','KOSPI','+29.91%','12,380원','458억')"><div><div class="stock-name">성신양회</div><div class="stock-mkt">458억</div></div><div style="text-align:right;"><div class="stock-price">12,380원</div><span class="badge-up">+29.91%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'성신양회우','KOSPI','+27.93%','13,740원','85억')"><div><div class="stock-name">성신양회우</div><div class="stock-mkt">85억</div></div><div style="text-align:right;"><div class="stock-price">13,740원</div><span class="badge-up">+27.93%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'와이투솔루션','KOSPI','+21.72%','6,670원','193억')"><div><div class="stock-name">와이투솔루션</div><div class="stock-mkt">193억</div></div><div style="text-align:right;"><div class="stock-price">6,670원</div><span class="badge-up">+21.72%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'계룡건설','KOSPI','+17.54%','30,150원','592억')"><div><div class="stock-name">계룡건설</div><div class="stock-mkt">592억</div></div><div style="text-align:right;"><div class="stock-price">30,150원</div><span class="badge-up">+17.54%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'두산퓨얼셀','KOSPI','+15.85%','43,500원','1,400억')"><div><div class="stock-name">두산퓨얼셀</div><div class="stock-mkt">1,400억</div></div><div style="text-align:right;"><div class="stock-price">43,500원</div><span class="badge-up">+15.85%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'우진플라임','KOSPI','+15.00%','2,990원','11억')"><div><div class="stock-name">우진플라임</div><div class="stock-mkt">11억</div></div><div style="text-align:right;"><div class="stock-price">2,990원</div><span class="badge-up">+15.00%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'한솔테크닉스','KOSPI','+13.67%','7,400원','1,062억')"><div><div class="stock-name">한솔테크닉스</div><div class="stock-mkt">1,062억</div></div><div style="text-align:right;"><div class="stock-price">7,400원</div><span class="badge-up">+13.67%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'부국철강','KOSPI','+12.84%','2,945원','806억')"><div><div class="stock-name">부국철강</div><div class="stock-mkt">806억</div></div><div style="text-align:right;"><div class="stock-price">2,945원</div><span class="badge-up">+12.84%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'코리아써키트','KOSPI','+12.50%','89,100원','783억')"><div><div class="stock-name">코리아써키트</div><div class="stock-mkt">783억</div></div><div style="text-align:right;"><div class="stock-price">89,100원</div><span class="badge-up">+12.50%</span></div></div>
+          </div>
+
+          <!-- KOSDAQ 급등 -->
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>KOSDAQ 급등</div>
+            <div class="stock-row clickable" onclick="loadNews(this,'루멘스','KOSDAQ','+30.00%','975원','76억')"><div><div class="stock-name">루멘스</div><div class="stock-mkt">76억</div></div><div style="text-align:right;"><div class="stock-price">975원</div><span class="badge-up">+30.00%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'아이씨에이치','KOSDAQ','+29.99%','1,504원','112억')"><div><div class="stock-name">아이씨에이치</div><div class="stock-mkt">112억</div></div><div style="text-align:right;"><div class="stock-price">1,504원</div><span class="badge-up">+29.99%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'퀄리타스반도체','KOSDAQ','+29.98%','20,550원','2,351억')"><div><div class="stock-name">퀄리타스반도체</div><div class="stock-mkt">2,351억 · 광반도체</div></div><div style="text-align:right;"><div class="stock-price">20,550원</div><span class="badge-up">+29.98%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'가온그룹','KOSDAQ','+29.97%','7,850원','198억')"><div><div class="stock-name">가온그룹</div><div class="stock-mkt">198억</div></div><div style="text-align:right;"><div class="stock-price">7,850원</div><span class="badge-up">+29.97%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'에프알텍','KOSDAQ','+29.97%','6,440원','385억')"><div><div class="stock-name">에프알텍</div><div class="stock-mkt">385억</div></div><div style="text-align:right;"><div class="stock-price">6,440원</div><span class="badge-up">+29.97%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'프럼파스트','KOSDAQ','+29.97%','4,900원','107억')"><div><div class="stock-name">프럼파스트</div><div class="stock-mkt">107억</div></div><div style="text-align:right;"><div class="stock-price">4,900원</div><span class="badge-up">+29.97%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'빛샘전자','KOSDAQ','+29.96%','18,220원','758억')"><div><div class="stock-name">빛샘전자</div><div class="stock-mkt">758억 · 광반도체</div></div><div style="text-align:right;"><div class="stock-price">18,220원</div><span class="badge-up">+29.96%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'서울전자통신','KOSDAQ','+29.95%','755원','14억')"><div><div class="stock-name">서울전자통신</div><div class="stock-mkt">14억</div></div><div style="text-align:right;"><div class="stock-price">755원</div><span class="badge-up">+29.95%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'사토시홀딩스','KOSDAQ','+29.94%','1,992원','11억')"><div><div class="stock-name">사토시홀딩스</div><div class="stock-mkt">11억</div></div><div style="text-align:right;"><div class="stock-price">1,992원</div><span class="badge-up">+29.94%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'아주IB투자','KOSDAQ','+29.93%','11,330원','3,432억')"><div><div class="stock-name">아주IB투자</div><div class="stock-mkt">3,432억</div></div><div style="text-align:right;"><div class="stock-price">11,330원</div><span class="badge-up">+29.93%</span></div></div>
+          </div>
+        </div>
+
+        <!-- 급락 섹션 -->
+        <div class="section-title" style="margin-top:6px;margin-bottom:10px;">급락 종목</div>
+        <div class="fall-grid">
+          <!-- KOSPI 급락 -->
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--dn);"></span>KOSPI 급락</div>
+            <div class="stock-row clickable" onclick="loadNews(this,'SNT에너지','KOSPI','-9.36%','58,100원','478억')"><div><div class="stock-name">SNT에너지</div><div class="stock-mkt">478억</div></div><div style="text-align:right;"><div class="stock-price">58,100원</div><span class="badge-dn">-9.36%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'남선알미우','KOSPI','-7.48%','14,850원','6억')"><div><div class="stock-name">남선알미우</div><div class="stock-mkt">6억</div></div><div style="text-align:right;"><div class="stock-price">14,850원</div><span class="badge-dn">-7.48%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'대한해운','KOSPI','-7.34%','2,650원','1,042억')"><div><div class="stock-name">대한해운</div><div class="stock-mkt">1,042억</div></div><div style="text-align:right;"><div class="stock-price">2,650원</div><span class="badge-dn">-7.34%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'SGC에너지','KOSPI','-6.38%','52,800원','108억')"><div><div class="stock-name">SGC에너지</div><div class="stock-mkt">108억</div></div><div style="text-align:right;"><div class="stock-price">52,800원</div><span class="badge-dn">-6.38%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'흥아해운','KOSPI','-6.27%','3,215원','464억')"><div><div class="stock-name">흥아해운</div><div class="stock-mkt">464억</div></div><div style="text-align:right;"><div class="stock-price">3,215원</div><span class="badge-dn">-6.27%</span></div></div>
+          </div>
+          <!-- KOSDAQ 급락 -->
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--dn);"></span>KOSDAQ 급락</div>
+            <div class="stock-row clickable" onclick="loadNews(this,'엑시온그룹','KOSDAQ','-17.81%','346원','14억')"><div><div class="stock-name">엑시온그룹</div><div class="stock-mkt">14억</div></div><div style="text-align:right;"><div class="stock-price">346원</div><span class="badge-dn">-17.81%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'대동금속','KOSDAQ','-9.14%','7,360원','44억')"><div><div class="stock-name">대동금속</div><div class="stock-mkt">44억</div></div><div style="text-align:right;"><div class="stock-price">7,360원</div><span class="badge-dn">-9.14%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'씨어스테크놀로지','KOSDAQ','-9.04%','43,250원','265억')"><div><div class="stock-name">씨어스테크놀로지</div><div class="stock-mkt">265억</div></div><div style="text-align:right;"><div class="stock-price">43,250원</div><span class="badge-dn">-9.04%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'피노','KOSDAQ','-8.84%','9,080원','315억')"><div><div class="stock-name">피노</div><div class="stock-mkt">315억</div></div><div style="text-align:right;"><div class="stock-price">9,080원</div><span class="badge-dn">-8.84%</span></div></div>
+            <div class="stock-row clickable" onclick="loadNews(this,'시선AI','KOSDAQ','-8.61%','3,080원','32억')"><div><div class="stock-name">시선AI</div><div class="stock-mkt">32억</div></div><div style="text-align:right;"><div class="stock-price">3,080원</div><span class="badge-dn">-8.61%</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 뉴스 패널 -->
+      <div class="news-panel" id="news-panel-el">
+        <div class="news-panel-header">
+          <div class="news-panel-title">
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="#8a8f9a" stroke-width="1.2"/><line x1="3" y1="4" x2="9" y2="4" stroke="#8a8f9a" stroke-width="1.2"/><line x1="3" y1="6.5" x2="9" y2="6.5" stroke="#8a8f9a" stroke-width="1.2"/><line x1="3" y1="9" x2="6" y2="9" stroke="#8a8f9a" stroke-width="1.2"/></svg>
+            뉴스 · 공시
+          </div>
+          <div class="news-powered">2026.04.14 실검색</div>
+        </div>
+        <div id="news-stock-bar" style="display:none;" class="news-stock-bar">
+          <div id="news-stock-name" class="news-stock-name"></div>
+          <div id="news-stock-meta" class="news-stock-meta"></div>
+        </div>
+        <div id="news-body" class="news-body">
+          <div class="news-empty">
+            <div class="news-empty-icon">←</div>
+            <div class="news-empty-text">종목을 클릭하면<br>관련 뉴스와 공시를<br>확인할 수 있습니다</div>
+            <div class="news-hint">전 종목 뉴스 수록 완료</div>
+          </div>
+        </div>
+        <div class="news-footer">※ 2026.04.14 실검색 기반 요약 · 투자 판단 전 원문 확인 요망</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ PANEL: 거래대금 ══ -->
+  <div class="panel" id="panel-volume">
+    <div class="section-title">거래대금 TOP 10 — 시장별</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--up);"></span>KOSPI 거래대금 TOP 10</div>
+        <div class="bar-row"><div class="bar-rank">1</div><div class="bar-name">삼성전자</div><div class="bar-track"><div class="bar-fill bar-flat" style="width:100%;"></div></div><div class="bar-pct"><span class="badge-dn">-2.43%</span></div><div class="bar-amount">3.94조</div></div>
+        <div class="bar-row"><div class="bar-rank">2</div><div class="bar-name">SK하이닉스</div><div class="bar-track"><div class="bar-fill bar-up" style="width:72%;"></div></div><div class="bar-pct"><span class="badge-up">+1.27%</span></div><div class="bar-amount">2.85조</div></div>
+        <div class="bar-row"><div class="bar-rank">3</div><div class="bar-name">대우건설</div><div class="bar-track"><div class="bar-fill bar-flat" style="width:19%;"></div></div><div class="bar-pct"><span class="badge-dn">-2.26%</span></div><div class="bar-amount">7,587억</div></div>
+        <div class="bar-row"><div class="bar-rank">4</div><div class="bar-name">남선알미늄</div><div class="bar-track"><div class="bar-fill bar-up" style="width:13%;"></div></div><div class="bar-pct"><span class="badge-up">+29.93%</span></div><div class="bar-amount">5,250억</div></div>
+        <div class="bar-row"><div class="bar-rank">5</div><div class="bar-name">LS ELECTRIC</div><div class="bar-track"><div class="bar-fill bar-up" style="width:12%;"></div></div><div class="bar-pct"><span class="badge-up">+13.71%</span></div><div class="bar-amount">4,585억</div></div>
+        <div class="bar-row"><div class="bar-rank">6</div><div class="bar-name">한화에어로스페이스</div><div class="bar-track"><div class="bar-fill bar-up" style="width:10%;"></div></div><div class="bar-pct"><span class="badge-up">+1.53%</span></div><div class="bar-amount">3,980억</div></div>
+        <div class="bar-row"><div class="bar-rank">7</div><div class="bar-name">LIG넥스원</div><div class="bar-track"><div class="bar-fill bar-up" style="width:9%;"></div></div><div class="bar-pct"><span class="badge-up">+1.95%</span></div><div class="bar-amount">3,567억</div></div>
+        <div class="bar-row"><div class="bar-rank">8</div><div class="bar-name">현대차</div><div class="bar-track"><div class="bar-fill bar-flat" style="width:8%;"></div></div><div class="bar-pct"><span class="badge-dn">-2.25%</span></div><div class="bar-amount">3,056억</div></div>
+        <div class="bar-row"><div class="bar-rank">9</div><div class="bar-name">대한해운</div><div class="bar-track"><div class="bar-fill bar-flat" style="width:8%;"></div></div><div class="bar-pct"><span class="badge-dn">-7.44%</span></div><div class="bar-amount">3,017억</div></div>
+        <div class="bar-row"><div class="bar-rank">10</div><div class="bar-name">남해화학</div><div class="bar-track"><div class="bar-fill bar-up" style="width:8%;"></div></div><div class="bar-pct"><span class="badge-up">+18.26%</span></div><div class="bar-amount">3,003억</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>KOSDAQ 거래대금 TOP 10</div>
+        <div class="bar-row"><div class="bar-rank">1</div><div class="bar-name">대한광통신</div><div class="bar-track"><div class="bar-fill bar-up" style="width:100%;"></div></div><div class="bar-pct"><span class="badge-up">+11.82%</span></div><div class="bar-amount">1.14조</div></div>
+        <div class="bar-row"><div class="bar-rank">2</div><div class="bar-name">세미파이브</div><div class="bar-track"><div class="bar-fill bar-up" style="width:45%;"></div></div><div class="bar-pct"><span class="badge-up">+16.61%</span></div><div class="bar-amount">5,105억</div></div>
+        <div class="bar-row"><div class="bar-rank">3</div><div class="bar-name">쏠리드</div><div class="bar-track"><div class="bar-fill bar-up" style="width:35%;"></div></div><div class="bar-pct"><span class="badge-up">+1.58%</span></div><div class="bar-amount">4,049억</div></div>
+        <div class="bar-row"><div class="bar-rank">4</div><div class="bar-name">우리로</div><div class="bar-track"><div class="bar-fill bar-up" style="width:27%;"></div></div><div class="bar-pct"><span class="badge-up">+29.91%</span></div><div class="bar-amount">3,115억</div></div>
+        <div class="bar-row"><div class="bar-rank">5</div><div class="bar-name">우리기술</div><div class="bar-track"><div class="bar-fill bar-up" style="width:18%;"></div></div><div class="bar-pct"><span class="badge-up">+0.48%</span></div><div class="bar-amount">2,105억</div></div>
+        <div class="bar-row"><div class="bar-rank">6</div><div class="bar-name">우리넷</div><div class="bar-track"><div class="bar-fill bar-up" style="width:18%;"></div></div><div class="bar-pct"><span class="badge-up">+30.00%</span></div><div class="bar-amount">2,078억</div></div>
+        <div class="bar-row"><div class="bar-rank">7</div><div class="bar-name">미래에셋벤처투자</div><div class="bar-track"><div class="bar-fill bar-up" style="width:17%;"></div></div><div class="bar-pct"><span class="badge-up">+7.16%</span></div><div class="bar-amount">1,981억</div></div>
+        <div class="bar-row"><div class="bar-rank">8</div><div class="bar-name">삼천당제약</div><div class="bar-track"><div class="bar-fill bar-up" style="width:17%;"></div></div><div class="bar-pct"><span class="badge-up">+4.16%</span></div><div class="bar-amount">1,913억</div></div>
+        <div class="bar-row"><div class="bar-rank">9</div><div class="bar-name">HPSP</div><div class="bar-track"><div class="bar-fill bar-flat" style="width:16%;"></div></div><div class="bar-pct"><span class="badge-dn">-9.11%</span></div><div class="bar-amount">1,776억</div></div>
+        <div class="bar-row"><div class="bar-rank">10</div><div class="bar-name">ISC</div><div class="bar-track"><div class="bar-fill bar-flat" style="width:15%;"></div></div><div class="bar-pct"><span class="badge-dn">-15.92%</span></div><div class="bar-amount">1,694억</div></div>
+      </div>
+    </div>
+    <div class="broker-note">주황 바 = 상승 · 파랑 바 = 하락 | 막대 길이는 각 시장 내 거래대금 상대 비율</div>
+  </div>
+
+  <!-- ══ PANEL: 기관·외국인 수급 (data: flow_data.js) ══ -->
+  <div class="panel" id="panel-flow">
+    <div class="summary">전일(<strong id="flow-asof">2026.04.14</strong>) 기준 <strong>거래대금 순매수</strong> 상위 종목 — 외국인·기관별, 코스피·코스닥별로 구분합니다.</div>
+    <div id="flow-root"></div>
+    <div class="broker-note" id="flow-foot">※ 원본: HTS 수급 엑셀(data_0907 외국인, data_3917 기관) · 시장 구분은 KRX 상장 종목 기준</div>
+  </div>
+
+  <!-- ══ PANEL: 테마 분석 ══ -->
+  <div class="panel" id="panel-theme">
+    <div class="theme-section-title">테마별 시황</div>
+    <div class="grid2">
+      <div class="theme-card">
+        <div class="theme-header"><div class="theme-name"><span style="width:8px;height:8px;border-radius:50%;background:var(--up);display:inline-block;"></span>반도체 · 광반도체</div><span class="theme-status status-strong">강세</span></div>
+        <div class="theme-stocks">
+          <div class="theme-stock-row"><span class="theme-stock-name">퀄리타스반도체</span><span class="theme-stock-pct" style="color:var(--up);">+29.98%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">우리로</span><span class="theme-stock-pct" style="color:var(--up);">+18.72%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">두산테스나</span><span class="theme-stock-pct" style="color:var(--up);">+11.52%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">SK하이닉스</span><span class="theme-stock-pct" style="color:var(--up);">+6.06%</span></div>
+        </div>
+        <div class="theme-reason">엔비디아 CEO 광반도체 발언 → 광통신·반도체 장비 전방위 급등</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-header"><div class="theme-name"><span style="width:8px;height:8px;border-radius:50%;background:var(--dn);display:inline-block;"></span>증권 · 금융</div><span class="theme-status status-strong">강세</span></div>
+        <div class="theme-stocks">
+          <div class="theme-stock-row"><span class="theme-stock-name">미래에셋증권</span><span class="theme-stock-pct" style="color:var(--up);">+10.87%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">SK스퀘어</span><span class="theme-stock-pct" style="color:var(--up);">+10.34%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">한화투자증권</span><span class="theme-stock-pct" style="color:var(--up);">+6.93%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">삼성증권</span><span class="theme-stock-pct" style="color:var(--up);">+5.19%</span></div>
+        </div>
+        <div class="theme-reason">시장 전반 거래량 급증 → 증권사 수수료 수익 기대감</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-header"><div class="theme-name"><span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span>방산</div><span class="theme-status status-mixed">혼조</span></div>
+        <div class="theme-stocks">
+          <div class="theme-stock-row"><span class="theme-stock-name">현대로템</span><span class="theme-stock-pct" style="color:var(--up);">+2.17%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">한화오션</span><span class="theme-stock-pct" style="color:var(--up);">+3.33%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">한화에어로스페이스</span><span class="theme-stock-pct" style="color:var(--dn);">-0.46%</span></div>
+        </div>
+        <div class="theme-reason">차익 실현 매물 출회 — 대형 방산주 소폭 하락</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-header"><div class="theme-name"><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span>건설</div><span class="theme-status status-mixed">혼조</span></div>
+        <div class="theme-stocks">
+          <div class="theme-stock-row"><span class="theme-stock-name">GS건설</span><span class="theme-stock-pct" style="color:var(--up);">+3.17%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">현대건설</span><span class="theme-stock-pct" style="color:var(--up);">+0.40%</span></div>
+          <div class="theme-stock-row"><span class="theme-stock-name">대우건설</span><span class="theme-stock-pct" style="color:var(--dn);">-1.05%</span></div>
+        </div>
+        <div class="theme-reason">선별적 강세 — 대우건설 거래대금 7,180억이나 소폭 하락 마감</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: PB 추천 ══ -->
+  <div class="panel" id="panel-broker">
+    <div class="summary">PDF 개발 목표 3항 기준 — <strong>거래대금 × 등락률 × 변동성</strong>을 복합 고려한 브로커 수수료 수익 최적화 종목 추출.</div>
+    <div class="pb-section-title">AI 추천 Top 종목</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--up);"></span>KOSPI</div>
+        <div class="stock-row"><div><div class="stock-name">삼성전자</div><div class="stock-mkt">KOSPI · 거래대금 3.94조 · 대형주 수급</div></div><div style="text-align:right;"><div class="stock-price">201,000원</div><span class="badge-dn">-2.43%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">SK하이닉스</div><div class="stock-mkt">KOSPI · 거래대금 2.85조 · 반도체 주도</div></div><div style="text-align:right;"><div class="stock-price">1,040,000원</div><span class="badge-up">+1.27%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">대우건설</div><div class="stock-mkt">KOSPI · 거래대금 7,587억 · 변동성 확대</div></div><div style="text-align:right;"><div class="stock-price">23,750원</div><span class="badge-dn">-2.26%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">남선알미늄</div><div class="stock-mkt">KOSPI · 거래대금 5,250억 · 급등 수급</div></div><div style="text-align:right;"><div class="stock-price">2,865원</div><span class="badge-up">+29.93%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">LS ELECTRIC</div><div class="stock-mkt">KOSPI · 거래대금 4,585억 · 전력 인프라</div></div><div style="text-align:right;"><div class="stock-price">179,200원</div><span class="badge-up">+13.71%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">한화에어로스페이스</div><div class="stock-mkt">KOSPI · 거래대금 3,980억 · 방산 모멘텀</div></div><div style="text-align:right;"><div class="stock-price">1,530,000원</div><span class="badge-up">+1.53%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">LIG넥스원</div><div class="stock-mkt">KOSPI · 거래대금 3,567억 · 방산 수급</div></div><div style="text-align:right;"><div class="stock-price">939,000원</div><span class="badge-up">+1.95%</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>KOSDAQ</div>
+        <div class="stock-row"><div><div class="stock-name">대한광통신</div><div class="stock-mkt">KOSDAQ · 거래대금 1.14조 · 수급 집중</div></div><div style="text-align:right;"><div class="stock-price">19,870원</div><span class="badge-up">+11.82%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">세미파이브</div><div class="stock-mkt">KOSDAQ · 거래대금 5,105억 · 강한 수급</div></div><div style="text-align:right;"><div class="stock-price">36,500원</div><span class="badge-up">+16.61%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">쏠리드</div><div class="stock-mkt">KOSDAQ · 거래대금 4,049억 · 통신 장비</div></div><div style="text-align:right;"><div class="stock-price">17,350원</div><span class="badge-up">+1.58%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">우리로</div><div class="stock-mkt">KOSDAQ · 거래대금 3,115억 · 급등 수급</div></div><div style="text-align:right;"><div class="stock-price">9,990원</div><span class="badge-up">+29.91%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">우리기술</div><div class="stock-mkt">KOSDAQ · 거래대금 2,105억 · 수급 유입</div></div><div style="text-align:right;"><div class="stock-price">21,100원</div><span class="badge-up">+0.48%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">우리넷</div><div class="stock-mkt">KOSDAQ · 거래대금 2,078억 · 상한가</div></div><div style="text-align:right;"><div class="stock-price">16,900원</div><span class="badge-up">+30.00%</span></div></div>
+        <div class="stock-row"><div><div class="stock-name">미래에셋벤처투자</div><div class="stock-mkt">KOSDAQ · 거래대금 1,981억 · VC 섹터</div></div><div style="text-align:right;"><div class="stock-price">29,950원</div><span class="badge-up">+7.16%</span></div></div>
+      </div>
+    </div>
+    <div class="broker-note">선정 기준 : 거래대금 상위 + 등락률 5% 이상 + 일중 변동폭 큰 종목<br>※ 본 리포트는 AI 자동 분석이며 투자 권유가 아닙니다.</div>
+  </div>
+
+  <!-- ══ PANEL: 전일 미국 시황 ══ -->
+  <div class="panel" id="panel-us">
+
+    <!-- 지수 요약 -->
+    <div class="section-title">2026.04.14 (현지시간) 뉴욕 증시 마감</div>
+    <div class="metrics" style="margin-bottom:20px;">
+      <div class="metric" data-rank="US">
+        <div class="metric-label">다우존스</div>
+        <div class="metric-value up">+0.66%</div>
+        <div class="metric-sub">48,535.99 pt · +318p</div>
+      </div>
+      <div class="metric" data-rank="US">
+        <div class="metric-label">S&amp;P 500</div>
+        <div class="metric-value up">+1.18%</div>
+        <div class="metric-sub">6,967.38 pt · 2/2 이후 최고</div>
+      </div>
+      <div class="metric" data-rank="US">
+        <div class="metric-label">나스닥</div>
+        <div class="metric-value up">+1.96%</div>
+        <div class="metric-sub">23,639.08 pt · 기술주 주도</div>
+      </div>
+      <div class="metric" data-rank="US">
+        <div class="metric-label">필라델피아 반도체</div>
+        <div class="metric-value up">+1.68%</div>
+        <div class="metric-sub">9,039.52 pt · 사상 최고치</div>
+      </div>
+    </div>
+
+    <!-- 거시 지표 + 시황 요약 -->
+    <div class="grid2" style="margin-bottom:14px;">
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--up);"></span>거시 지표</div>
+        <div class="stock-row">
+          <div><div class="stock-name">WTI 유가</div><div class="stock-mkt">미·이란 2차 협상 기대 → 급락</div></div>
+          <div style="text-align:right;"><div class="stock-price">$91.20</div><span class="badge-dn">-7.87%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">브렌트유</div><div class="stock-mkt">호르무즈 재개방 기대 반영</div></div>
+          <div style="text-align:right;"><div class="stock-price">$92.15</div><span class="badge-dn">-6.90%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">VIX (공포지수)</div><div class="stock-mkt">지정학 리스크 완화</div></div>
+          <div style="text-align:right;"><div class="stock-price">18.38</div><span class="badge-dn">-안정</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">3월 PPI</div><div class="stock-mkt">예상치 대폭 하회 → 인플레 완화</div></div>
+          <div style="text-align:right;"><div class="stock-price">예상↓</div><span class="badge-up">호재</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">달러 인덱스</div><div class="stock-mkt">6일 연속 약세 지속</div></div>
+          <div style="text-align:right;"><div class="stock-price">DXY</div><span class="badge-dn">약세</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--gold);"></span>시황 핵심 요약</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.85;padding:4px 0;">
+          <div style="margin-bottom:10px;padding:10px 12px;background:var(--bg3);border-radius:8px;border-left:2px solid var(--accent);">
+            미국과 이란의 <strong style="color:var(--text);">2차 평화협상 기대감</strong>이 확산되며 뉴욕 3대 지수가 일제히 급등. S&P500은 2월 2일 이후 최고치 경신.
+          </div>
+          <div style="margin-bottom:10px;padding:10px 12px;background:var(--bg3);border-radius:8px;border-left:2px solid var(--dn);">
+            3월 <strong style="color:var(--text);">PPI 예상 대폭 하회</strong>로 인플레이션 우려가 완화되며 기술주 매수세 강화. 베선트 재무장관 "연준 금리 인하해야" 발언도 긍정적으로 작용.
+          </div>
+          <div style="padding:10px 12px;background:var(--bg3);border-radius:8px;border-left:2px solid var(--green);">
+            <strong style="color:var(--text);">필라델피아 반도체 지수</strong> 사상 최고치 재경신 → 국내 SK하이닉스·삼성전자 강세로 직결.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 빅테크 종목 -->
+    <div class="section-title">빅테크 · 주요 종목</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
+
+      <!-- 강세 -->
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--up);"></span>강세 종목</div>
+        <div class="stock-row">
+          <div><div class="stock-name">마이크로소프트 (MSFT)</div><div class="stock-mkt">AI 클라우드 수요 기대</div></div>
+          <div style="text-align:right;"><div class="stock-price">$438.20</div><span class="badge-up">+3.64%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">엔비디아 (NVDA)</div><div class="stock-mkt">광반도체·AI 인프라 수혜</div></div>
+          <div style="text-align:right;"><div class="stock-price">$196.49</div><span class="badge-up">+3.79%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">인텔 (INTC)</div><div class="stock-mkt">반도체 섹터 동반 강세</div></div>
+          <div style="text-align:right;"><div class="stock-price">$24.80</div><span class="badge-up">+4.49%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">메타 (META)</div><div class="stock-mkt">릴스·AI 광고 수익 급증</div></div>
+          <div style="text-align:right;"><div class="stock-price">$652.30</div><span class="badge-up">+4.42%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">아마존 (AMZN)</div><div class="stock-mkt">AWS 성장 + 협상 기대</div></div>
+          <div style="text-align:right;"><div class="stock-price">$218.90</div><span class="badge-up">+3.77%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">브로드컴 (AVGO)</div><div class="stock-mkt">AI 네트워킹 칩 수요 ↑</div></div>
+          <div style="text-align:right;"><div class="stock-price">$198.40</div><span class="badge-up">+2.21%</span></div>
+        </div>
+      </div>
+
+      <!-- 약세 -->
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--dn);"></span>약세 종목</div>
+        <div class="stock-row">
+          <div><div class="stock-name">카맥스 (KMX)</div><div class="stock-mkt">중고차 Q1 실적 대폭 하회</div></div>
+          <div style="text-align:right;"><div class="stock-price">$62.10</div><span class="badge-dn">-15.12%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">웰스파고 (WFC)</div><div class="stock-mkt">Q1 NII 마진 압박·실적 실망</div></div>
+          <div style="text-align:right;"><div class="stock-price">$75.40</div><span class="badge-dn">-5.70%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">JP모건 (JPM)</div><div class="stock-mkt">EPS 서프라이즈에도 NII 가이던스 하향</div></div>
+          <div style="text-align:right;"><div class="stock-price">$268.50</div><span class="badge-dn">-0.82%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">존슨&앤드존슨 (JNJ)</div><div class="stock-mkt">전망 상향에도 차익 실현</div></div>
+          <div style="text-align:right;"><div class="stock-price">$162.40</div><span class="badge-dn">-0.40%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">에너지 섹터 (XLE)</div><div class="stock-mkt">WTI -7.87% 급락 직격</div></div>
+          <div style="text-align:right;"><div class="stock-price">ETF</div><span class="badge-dn">-2.16%</span></div>
+        </div>
+      </div>
+
+      <!-- 주요 이슈 -->
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--gold);"></span>주요 이슈 종목</div>
+        <div class="stock-row">
+          <div><div class="stock-name">시티그룹 (C)</div><div class="stock-mkt">Q1 순이익 +42% · 20년래 최고치</div></div>
+          <div style="text-align:right;"><div class="stock-price">$131.42</div><span class="badge-up">+2.61%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">아메리칸항공 (AAL)</div><div class="stock-mkt">유나이티드항공 합병 제안 보도</div></div>
+          <div style="text-align:right;"><div class="stock-price">$14.20</div><span class="badge-up">+8.01%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">노보 노디스크 (NVO)</div><div class="stock-mkt">오픈AI와 AI 신약개발 협업 발표</div></div>
+          <div style="text-align:right;"><div class="stock-price">$87.60</div><span class="badge-up">+3.53%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">글로벌스타 (GSAT)</div><div class="stock-mkt">아마존 인수 협의 소식</div></div>
+          <div style="text-align:right;"><div class="stock-price">$2.84</div><span class="badge-up">+9.63%</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">블랙록 (BLK)</div><div class="stock-mkt">Q1 AUM $10조+ · EPS 어닝 서프라이즈</div></div>
+          <div style="text-align:right;"><div class="stock-price">$1,024.50</div><span class="badge-up">+4.00%</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 한국 시장 연결 -->
+    <div class="card" style="margin-top:14px;">
+      <div class="card-title"><span class="dot" style="background:var(--green);"></span>미국 → 한국 시장 영향 분석</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:4px 0;">
+        <div style="padding:12px;background:var(--bg3);border-radius:8px;">
+          <div style="font-size:10px;color:var(--text3);margin-bottom:5px;text-transform:uppercase;letter-spacing:.3px;">반도체</div>
+          <div style="font-size:12px;color:var(--text);font-weight:500;margin-bottom:3px;">필라델피아 반도체 +1.68% 최고치</div>
+          <div style="font-size:11px;color:var(--up);">→ SK하이닉스 +6.06%, 삼성전자 +2.74%</div>
+        </div>
+        <div style="padding:12px;background:var(--bg3);border-radius:8px;">
+          <div style="font-size:10px;color:var(--text3);margin-bottom:5px;text-transform:uppercase;letter-spacing:.3px;">에너지</div>
+          <div style="font-size:12px;color:var(--text);font-weight:500;margin-bottom:3px;">WTI 유가 -7.87% 급락</div>
+          <div style="font-size:11px;color:var(--dn);">→ SNT에너지 -9.36%, 해운주 동반 하락</div>
+        </div>
+        <div style="padding:12px;background:var(--bg3);border-radius:8px;">
+          <div style="font-size:10px;color:var(--text3);margin-bottom:5px;text-transform:uppercase;letter-spacing:.3px;">지정학</div>
+          <div style="font-size:12px;color:var(--text);font-weight:500;margin-bottom:3px;">미·이란 2차 협상 기대</div>
+          <div style="font-size:11px;color:var(--up);">→ 시장 전반 상승, 증권주 동반 강세</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 주요 일정: 실적 발표 -->
+    <div class="section-title" style="margin-top:20px;">주요 일정 — 실적 발표 & 경제 이벤트 (2026.04.14)</div>
+
+    <!-- 실적 발표 테이블 -->
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-title"><span class="dot" style="background:var(--gold);"></span>Q1 2026 실적 발표 — 금융주 집중 (당일 최대 실적 발표일)</div>
+
+      <!-- 어닝 행 스타일 -->
+      <div style="display:grid;grid-template-columns:120px 80px 1fr 90px 90px 90px;gap:0;font-size:11px;">
+        <!-- 헤더 -->
+        <div style="padding:7px 8px;border-bottom:1px solid var(--border2);color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;">종목</div>
+        <div style="padding:7px 8px;border-bottom:1px solid var(--border2);color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;">티커</div>
+        <div style="padding:7px 8px;border-bottom:1px solid var(--border2);color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;">핵심 내용</div>
+        <div style="padding:7px 8px;border-bottom:1px solid var(--border2);color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;text-align:right;">EPS 예상</div>
+        <div style="padding:7px 8px;border-bottom:1px solid var(--border2);color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;text-align:right;">EPS 실제</div>
+        <div style="padding:7px 8px;border-bottom:1px solid var(--border2);color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;text-align:right;">주가반응</div>
+
+        <!-- JPMorgan -->
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text);">JP모건</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-family:'DM Mono',monospace;">JPM</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);">순이익 $16.5B(+13% YoY), 매출 $49.8B. 트레이딩 역대 최고 $11.6B. NII 가이던스 $103B로 소폭 하향. Dimon "리스크 복잡성 증가" 경고.</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$5.43</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--green);font-weight:500;">$5.94 ✓</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);text-align:right;"><span class="badge-dn">-0.82%</span></div>
+
+        <!-- Citigroup -->
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text);">씨티그룹</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-family:'DM Mono',monospace;">C</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);">순이익 $5.8B(+42% YoY), 매출 $24.6B. Project Bora Bora 구조조정 성과. RoTCE 13.1% 달성. 주가 20년래 최고치.</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$2.63</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--green);font-weight:500;">$3.06 ✓</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);text-align:right;"><span class="badge-up">+2.61%</span></div>
+
+        <!-- Wells Fargo -->
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text);">웰스파고</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-family:'DM Mono',monospace;">WFC</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);">NII 마진 압박 지속. 대출 성장 정체. 예금 비용 상승. 규제 자산 한도 해제 이후에도 경쟁력 회복 미흡 평가.</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$1.24</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--up);font-weight:500;">$1.18 ✗</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);text-align:right;"><span class="badge-dn">-5.70%</span></div>
+
+        <!-- BlackRock -->
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text);">블랙록</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-family:'DM Mono',monospace;">BLK</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);">AUM $10조+ 유지. ETF·대안투자 순유입 강세. "2026년 강력한 출발" 선언. 기관 자본 배분 수요 확대 확인.</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$12.25</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--green);font-weight:500;">$12.82 ✓</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);text-align:right;"><span class="badge-up">+4.00%</span></div>
+
+        <!-- Goldman Sachs (전일) -->
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text);">골드만삭스</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-family:'DM Mono',monospace;">GS</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);">IB 수수료 +48% YoY 급증. 단, FICC 트레이딩 -10% 예상 하회 혼조. 주식 트레이딩 역대 최고. (4/13 발표)</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$16.35</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--green);font-weight:500;">$17.28 ✓</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);text-align:right;"><span class="badge-up">+2.40%</span></div>
+
+        <!-- Johnson & Johnson -->
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text);">존슨&앤드존슨</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-family:'DM Mono',monospace;">JNJ</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);color:var(--text2);">EPS 예상 소폭 상회. 2026년 매출 전망 상향 조정. 의약품·의료기기 부문 호조. 소폭 하락 마감.</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$2.68</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;text-align:right;color:var(--green);font-weight:500;">$2.70 ✓</div>
+        <div style="padding:9px 8px;border-bottom:1px solid var(--border);text-align:right;"><span class="badge-dn">-0.40%</span></div>
+
+        <!-- CarMax -->
+        <div style="padding:9px 8px;font-weight:500;color:var(--text);">카맥스</div>
+        <div style="padding:9px 8px;color:var(--text2);font-family:'DM Mono',monospace;">KMX</div>
+        <div style="padding:9px 8px;color:var(--text2);">중고차 판매량 급감. 소비자 신용 악화 우려. 실적 대폭 하회. 고금리·유가 상승에 따른 소비 위축 직격탄.</div>
+        <div style="padding:9px 8px;font-family:'DM Mono',monospace;text-align:right;color:var(--text2);">$0.87</div>
+        <div style="padding:9px 8px;font-family:'DM Mono',monospace;text-align:right;color:var(--dn);font-weight:500;">$0.49 ✗</div>
+        <div style="padding:9px 8px;text-align:right;"><span class="badge-dn">-15.12%</span></div>
+      </div>
+    </div>
+
+    <!-- 경제 지표 & 주요 이벤트 -->
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--dn);"></span>경제 지표 발표</div>
+        <div class="stock-row">
+          <div><div class="stock-name">3월 PPI (생산자물가)</div><div class="stock-mkt">전월比 +0.5% · 예상 +1.1% 대폭 하회</div></div>
+          <div style="text-align:right;"><span class="badge-up">호재</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">3월 Core PPI</div><div class="stock-mkt">+0.1% · 예상 +0.5% 하회 → 인플레 완화 신호</div></div>
+          <div style="text-align:right;"><span class="badge-up">호재</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">연준 베이지북 공개</div><div class="stock-mkt">4/15 예정 · 지역별 경기 점검</div></div>
+          <div style="text-align:right;"><span style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;">D+1</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">IMF/WB 춘계 회의</div><div class="stock-mkt">4/13~18 진행 중 · 글로벌 성장 전망 논의</div></div>
+          <div style="text-align:right;"><span style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;">진행중</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot" style="background:var(--accent);"></span>지정학 & 기업 이벤트</div>
+        <div class="stock-row">
+          <div><div class="stock-name">미·이란 2차 협상</div><div class="stock-mkt">파키스탄 중재 · JD밴스 "진전 많았다" 발언</div></div>
+          <div style="text-align:right;"><span class="badge-up">호재</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">노보 노디스크 +3.53%</div><div class="stock-mkt">오픈AI와 AI 신약개발 협업 발표</div></div>
+          <div style="text-align:right;"><span class="badge-up">상승</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">아메리칸항공 +8.01%</div><div class="stock-mkt">유나이티드항공 CEO 합병 제안 보도</div></div>
+          <div style="text-align:right;"><span class="badge-up">상승</span></div>
+        </div>
+        <div class="stock-row">
+          <div><div class="stock-name">이번 주 주요 실적 예정</div><div class="stock-mkt">ASML(4/16), 넷플릭스(4/16), 모건스탠리(4/15)</div></div>
+          <div style="text-align:right;"><span style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;">예정</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel" id="panel-news">
+
+    <div class="summary">
+      총 <strong>19건</strong>의 특징주 기사를 <strong>6개 테마</strong>로 분류 정리했습니다.
+    </div>
+
+    <!-- 테마 공통 스타일용 인라인 정의 -->
+    <!-- ① 광통신·AI 인프라 -->
+    <div style="border:1.5px solid rgba(255,107,61,0.35);border-radius:14px;padding:20px 22px;margin-bottom:18px;max-width:100%;">
+      <div style="font-size:16px;font-weight:700;color:var(--up);letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--up);display:inline-block;flex-shrink:0;"></span>
+        광통신 · AI 인프라
+        <span style="font-size:11px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace;margin-left:4px;">2종목</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--up);"></span>빛과전자 <span style="font-weight:400;color:var(--up);">+24%</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">엔비디아 젠슨 황 CEO가 GTC 2026에서 실리콘 포토닉스(광반도체)를 AI 인프라 핵심 기술로 언급한 이후 국내 광통신 부품주에 수급이 폭발적으로 집중됐다. 빛과전자는 마이크로 LED 및 광반도체 부품을 공급하는 기업으로, AI 데이터센터 내부의 GPU 간 초고속 광연결 수요 증가의 직접 수혜주로 부각됐다. 엔비디아가 마벨·루멘텀 등 글로벌 광학 부품사에 대규모 투자를 공식화하면서 국내 공급망으로 관심이 확산됐으며, 빛과전자는 국내 광반도체 테마 대장주로 자리잡았다. 거래대금이 2,500억원을 돌파하며 기관·외국인도 일부 유입됐고, 투자경고 발동 여부를 앞두고도 매수세가 지속됐다. 2026년 3월 이후 누적 상승률이 300%를 초과하며 시장 내 가장 뜨거운 테마주 중 하나로 자리잡았다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--up);"></span>한솔테크닉스 <span style="font-weight:400;color:var(--up);">2일 연속 강세</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">한솔테크닉스가 미국 기반 전자부품 제조사인 월테크놀러지(Wall Technology)를 인수한다는 소식이 공시를 통해 확인되며 2일 연속 강세를 이어갔다. 월테크놀러지는 전장부품·카메라모듈 부품 분야 전문 기업으로, 인수를 통해 한솔테크닉스의 북미 전장 시장 진입이 가속화될 것으로 기대된다. 시장에서는 이번 M&A가 단순한 매출 확대를 넘어 전기차 전장·AI 카메라모듈 분야에서의 기술 시너지를 가져올 것으로 평가하고 있다. 거래대금 1,062억원을 기록하며 기관 매수세도 확인됐고, 증권사들은 목표주가를 상향 조정하는 흐름이 나타났다. 전장 부품 수요 증가와 맞물려 중장기 성장 모멘텀으로 이어질 가능성이 높다는 분석이 지배적이다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 전력·소재 -->
+    <div style="border:1.5px solid rgba(78,203,138,0.35);border-radius:14px;padding:20px 22px;margin-bottom:18px;max-width:100%;">
+      <div style="font-size:16px;font-weight:700;color:#4ecb8a;letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#4ecb8a;display:inline-block;flex-shrink:0;"></span>
+        전력 인프라 · 소재
+        <span style="font-size:11px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace;margin-left:4px;">4종목</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>LS일렉트릭 <span style="font-weight:400;color:#4ecb8a;">+8%</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">LS일렉트릭이 미국 빅테크 대상 데이터센터 전력설비 공급 프로젝트(PJT)를 약 1,703억원 규모로 수주했다는 공시가 시장에 큰 반향을 일으키며 +8% 급등했다. AI 데이터센터의 폭발적인 전력 수요 증가 속에 전력 인프라 공급사로서의 입지가 재평가받고 있으며, 북미 시장에서의 수주 레퍼런스 확보가 추가 수주 가능성으로 이어질 것이라는 기대가 크다. 여기에 액면분할 효과로 주당 가격이 낮아지면서 개인 투자자의 접근성이 개선됐고, 거래량도 크게 늘었다. 여러 증권사가 동시에 목표주가를 상향하며 "AI 전력 인프라 최선호주"로 추천했다. 2026년 연간 북미 수주 모멘텀이 지속될 경우 추가 상승 여력이 있다는 분석이 우세하다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>남선알미늄 · 조일알미늄 <span style="font-weight:400;color:#4ecb8a;">동반 상승</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">미국과 이란 간 호르무즈 해협 봉쇄 장기화로 글로벌 원자재 수급 불안이 고조되면서 알루미늄 관련주인 남선알미늄과 조일알미늄이 동반 상승했다. 호르무즈 해협은 전 세계 원유·LNG 물동량의 30% 이상이 통과하는 핵심 항로로, 봉쇄 장기화는 알루미늄 제련에 필요한 에너지 비용 상승과 보크사이트 수입 차질로 직결된다. 글로벌 알루미늄 재고 감소와 LME(런던금속거래소) 알루미늄 가격 상승이 국내 알루미늄 기업의 제품 판가 인상으로 이어질 것이라는 기대감이 수급을 끌어당겼다. 남선알미늄은 거래대금 4,693억원으로 코스피 거래대금 7위를 기록했다. 중동 긴장 완화 여부에 따라 단기 변동성이 클 수 있어 주의가 필요하다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>삼화페인트 <span style="font-weight:400;color:#4ecb8a;">+6%대</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">삼화페인트가 반도체 공정에 적용되는 핵심 특수 코팅 소재를 상용화했다는 소식이 전해지며 주가가 6%대 상승했다. 해당 소재는 반도체 패키징 공정에서 절연·보호 기능을 담당하는 것으로, 기존 페인트 사업과는 별개의 고부가가치 신사업으로 평가된다. 반도체 공정 소재의 국산화 수요가 커지는 가운데, 삼화페인트가 틈새 시장을 선점할 가능성이 부각됐다. 시장에서는 소재 상용화가 국내 반도체 패키징 업체들과의 공급 계약으로 이어질 경우 추가적인 밸류에이션 재평가가 가능하다고 분석했다. 기존 건축·산업용 페인트 외에 반도체 소재라는 새로운 성장축이 형성됐다는 점에서 중장기 투자 매력이 높아졌다는 평가다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#4ecb8a;"></span>삼성전자 · SK하이닉스 <span style="font-weight:400;color:#4ecb8a;">동반 강세</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">반도체 수출 호조 지표 발표, 미·이란 협상 재개 기대, 전날 미국 필라델피아 반도체 지수 사상 최고치 경신이라는 세 가지 호재가 동시에 작용하며 삼성전자와 SK하이닉스가 동반 강세를 기록했다. 삼성전자는 HBM4 세계 최초 양산을 통해 엔비디아 공급망 진입에 성공했다는 소식이 주가에 긍정적으로 반영됐으며, SK하이닉스는 글로벌 AI 칩 수요 증가에 따른 HBM 공급 지속 성장이 기대됐다. 두 종목 합산 거래대금이 약 10조원에 달해 시장 주도주 역할을 했다. 증권가에서는 2026년 하반기 HBM3E 및 HBM4 본격 양산이 실적 레버리지를 높일 것으로 전망하고 있다. 국내 반도체 업황 회복 사이클의 본격화 신호로 해석하는 시각이 우세하다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ 증권·금융 -->
+    <div style="border:1.5px solid rgba(74,158,255,0.35);border-radius:14px;padding:20px 22px;margin-bottom:18px;max-width:100%;">
+      <div style="font-size:16px;font-weight:700;color:var(--dn);letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--dn);display:inline-block;flex-shrink:0;"></span>
+        증권 · 금융
+        <span style="font-size:11px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace;margin-left:4px;">2종목</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--dn);"></span>증권주 전반 <span style="font-weight:400;color:var(--up);">오름세</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">미·이란 종전 협상 기대감이 확산되며 투자 심리가 빠르게 개선됐고, 코스피·코스닥 거래대금이 폭증하면서 증권주 전반이 강세를 보였다. 거래대금 증가는 곧 증권사 위탁매매 수수료 수익의 직접 증가로 이어지기 때문에, 시장 활황 시 증권주는 레버리지 수혜를 받는 구조다. 키움증권 +3.78%, 삼성증권 +5.19%, 한화투자증권 +6.93% 등 섹터 전반이 고르게 상승했으며, 특히 리테일 고객 비중이 높은 증권사들의 수익 개선 기대가 컸다. 외국인 투자자들의 국내 주식 매수 재개 가능성도 증권사 실적에 긍정적이다. 증권주는 시장 심리 지표로도 기능하는 만큼 향후 거래대금 추이가 주요 모니터링 포인트다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--dn);"></span>미래에셋증권 <span style="font-weight:400;color:var(--up);">+4%</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">미래에셋증권의 1분기 순이익이 1.2조원에 달할 것이라는 증권가 추정치가 나오며 어닝서프라이즈 기대감에 +4% 상승했다. 여기에 스페이스X 테마가 지속되면서 미래에셋벤처투자 등 미래에셋 계열사에 대한 관심도 함께 높아졌다. 미래에셋증권은 해외 투자 포트폴리오에서 글로벌 테크·우주항공 기업 투자 비중이 높아, 글로벌 시장 강세가 성과보수 수입으로 직결되는 구조다. 브로커리지 수익 외에 IB(투자은행) 수수료 및 해외법인 실적도 개선될 것으로 전망됐다. 국내 증권사 중 글로벌 자산운용 역량이 가장 뛰어나다는 평가와 함께 장기 투자 매력도가 높다는 분석이 잇따랐다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 바이오·헬스케어 -->
+    <div style="border:1.5px solid rgba(240,192,96,0.4);border-radius:14px;padding:20px 22px;margin-bottom:18px;max-width:100%;">
+      <div style="font-size:16px;font-weight:700;color:var(--gold);letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--gold);display:inline-block;flex-shrink:0;"></span>
+        바이오 · 헬스케어
+        <span style="font-size:11px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace;margin-left:4px;">4종목</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--gold);"></span>종근당바이오 <span style="font-weight:400;color:var(--up);">상승</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">종근당바이오가 중국에서 진행 중인 보툴리눔 톡신(보톡스) 관련 임상 3상에서 긍정적인 결과를 얻었다는 소식이 전해지며 주가가 상승했다. 중국의 미용·에스테틱 시장은 연간 1조원 이상의 규모를 갖추고 있으며 고성장 중으로, 3상 성공은 현지 시장 본격 진출의 발판이 된다. 국내 보툴리눔 톡신 시장은 메디톡스·휴젤·대웅제약이 과점하고 있으나, 중국 등 해외 시장에서는 후발주자들에게도 충분한 기회가 있다는 평가다. 종근당바이오는 자체 발효·정제 기술로 원가 경쟁력을 보유하고 있어 가격 경쟁에서도 우위를 점할 가능성이 있다. 추가 임상 단계 및 현지 판매 파트너십 확보 여부가 향후 주가의 핵심 변수다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--gold);"></span>일동제약 <span style="font-weight:400;color:var(--up);">+10%</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">일동제약이 자회사 유노비아(Yunovia)를 본체에 재합병한다는 이사회 결의 공시가 발표되며 +10% 급등했다. 유노비아는 전문의약품 영업·마케팅 전문 법인으로, 분리 설립 이후 독자 성장보다 모회사 통합 시의 시너지가 더 크다는 판단에 따른 결정으로 해석된다. 재합병을 통해 지배구조가 단순화되고, 유노비아의 숨겨진 기업가치가 일동제약 본체로 흡수되면서 밸류에이션이 재평가될 것이라는 기대가 매수세를 끌어들였다. 재합병 후 영업·마케팅 효율성 개선과 비용 절감 효과도 기대된다. 제약·바이오 섹터 내 지배구조 개선 모멘텀이 주가 프리미엄으로 이어지는 흐름의 일환으로 볼 수 있다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--gold);"></span>로킷헬스케어 <span style="font-weight:400;color:var(--up);">상승</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">로킷헬스케어가 아랍에미리트(UAE)의 의료·바이오 전문 투자사와 합작법인(JV) 설립을 위한 MOU를 체결하고 약 300억원 규모의 투자 유치를 추진한다는 소식이 전해지며 상승세를 보였다. 로킷헬스케어는 국내 바이오프린팅(3D 세포 프린팅) 기술 선도 기업으로, 인공피부·연골 등 재생의료 분야에서 독자적인 기술력을 보유하고 있다. UAE는 최근 의료 관광 및 재생의료 분야에 대규모 투자를 확대하고 있어, 이번 JV가 중동 의료 시장 진출의 교두보가 될 것으로 기대된다. 투자 유치가 실현될 경우 재무 구조 개선과 함께 중동 레퍼런스 확보로 글로벌 확장에 탄력이 붙을 것으로 예상된다. 바이오프린팅은 미래 재생의료의 핵심 기술로 글로벌 관심이 높아지는 분야다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--gold);"></span>아이엘 <span style="font-weight:400;color:var(--up);">+4%</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">아이엘이 전고체배터리용 박막(Thin Film)과 후막(Thick Film)을 결합한 하이브리드 전극 제조기술 특허를 출원했다는 소식으로 +4% 상승했다. 전고체배터리는 기존 리튬이온 배터리 대비 안전성과 에너지 밀도가 뛰어나 차세대 전기차·ESS의 핵심 기술로 주목받고 있다. 전극 제조기술은 전고체배터리 상용화의 핵심 병목 중 하나로, 아이엘의 특허 출원은 이 분야에서의 원천기술 확보를 의미한다. 삼성SDI·LG에너지솔루션 등 대형 배터리 업체들이 전고체 배터리 상용화에 속도를 내고 있어, 관련 소재·부품 업체들의 기술력이 시장에서 프리미엄을 받고 있다. 향후 특허 등록과 기술 이전·공급 계약 체결 여부가 주가의 핵심 촉매다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ 보안·로봇·IT -->
+    <div style="border:1.5px solid rgba(170,100,255,0.35);border-radius:14px;padding:20px 22px;margin-bottom:18px;max-width:100%;">
+      <div style="font-size:16px;font-weight:700;color:#b06aff;letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#b06aff;display:inline-block;flex-shrink:0;"></span>
+        보안 · 로봇 · IT
+        <span style="font-size:11px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace;margin-left:4px;">4종목</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#b06aff;"></span>아이씨티케이 <span style="font-weight:400;color:var(--up);">급등</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">'미토스(MITOS)'로 불리는 신종 랜섬웨어가 전 세계 주요 인프라를 공격하며 글로벌 사이버 보안 위기가 고조되는 가운데, 아이씨티케이가 보유한 '100% 복제 불가' 하드웨어 보안칩(PUF; Physically Unclonable Function) 기술이 초격차 솔루션으로 재조명됐다. PUF 기술은 소프트웨어 방식으로는 해결 불가능한 하드웨어 수준의 복제·위변조 방지 기능을 제공하며, 아이씨티케이는 이 분야의 글로벌 표준 기술을 보유한 국내 유일 기업이다. 랜섬웨어 공격이 정부 기관·금융사·에너지 인프라 등으로 확산되면서 하드웨어 보안칩의 의무 도입 논의가 활발해졌다. 글로벌 IoT 기기·자율주행·스마트팩토리 확산과 함께 보안칩 수요는 구조적으로 증가하는 트렌드다. 사이버 보안 위기가 현실화될수록 수혜 강도가 커지는 종목 특성상 단기 변동성도 크다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#b06aff;"></span>모니터랩 <span style="font-weight:400;color:var(--up);">상승</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">모니터랩은 생성형 AI를 활용한 해킹·사이버 위협 대응 기술을 실제 기업 사업 환경에 적용하고 있는 국내 유일의 SSE(Security Service Edge) 플랫폼 상용화 기업으로 재조명받았다. SSE는 클라우드 보안·네트워크 접근 제어·위협 탐지를 통합한 차세대 보안 아키텍처로, 기업들의 원격근무 및 클라우드 전환 가속화와 함께 수요가 급증하고 있다. 생성형 AI의 등장으로 피싱·사회공학적 해킹 수법이 더욱 정교해지면서 AI 기반 대응 플랫폼의 필요성이 부각됐다. 모니터랩의 플랫폼은 대기업·금융사·공공기관을 대상으로 이미 상용화돼 있어, 신뢰성 측면에서 후발 경쟁자와 차별화된다. 보안 업종의 특성상 한 번 도입되면 교체 비용이 크기 때문에 고객 락인(Lock-in) 효과도 강하다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#b06aff;"></span>티엑스알로보틱스 <span style="font-weight:400;color:var(--up);">상승</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">정부가 소방청을 통해 전국 소방서에 소방 로봇 도입을 전면 확대하라는 지시를 내리면서 티엑스알로보틱스가 국내 소방 로봇 독점 공급사로 부각됐다. 티엑스알로보틱스의 소방 로봇은 화재 진압·인명 탐색 등 위험 환경에서의 작업을 대체하는 장비로, 소방청과의 공급 계약 이력이 있어 신규 발주에서도 유리한 위치를 점하고 있다. 정부의 공공 안전 인프라 예산 확대 기조가 지속되는 가운데, 재난·안전 로봇 분야는 방위산업에 준하는 안정적 수요처로 평가된다. 해외 시장에서도 소방 로봇 수요가 증가하고 있어 수출 확장 가능성도 열려 있다. 독점 공급 구조와 정부 수요의 결합은 중장기적으로 안정적인 매출 기반을 제공한다는 분석이다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:#b06aff;"></span>카카오 <span style="font-weight:400;color:var(--up);">+3.09%</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">카카오의 광고 사업이 AI 기반 타겟팅 고도화와 카카오쇼핑 성장에 힘입어 고성장세를 이어가고 있으며, 수익성도 함께 개선되고 있다는 분석이 잇따르며 +3.09% 상승했다. 카카오톡의 일 사용자(DAU) 기반이 견고하게 유지되는 가운데, 광고주들이 AI 알고리즘 기반의 정밀 타겟팅 광고를 선호하면서 카카오 광고 단가가 상승하는 추세다. 카카오쇼핑과 카카오선물하기의 거래액 증가도 광고 수익 확대로 이어지고 있다. 1분기 실적 발표를 앞두고 컨센서스 상향 조정이 이뤄지고 있으며, 시장에서는 어닝서프라이즈 가능성도 열어두고 있다. 카카오뱅크·카카오페이 등 핀테크 계열사의 실적 개선과 맞물려 그룹 전체의 밸류에이션 재평가 기대감도 반영됐다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ 기타 개별 이슈 -->
+    <div style="border:1.5px solid rgba(138,143,154,0.3);border-radius:14px;padding:20px 22px;max-width:100%;">
+      <div style="font-size:16px;font-weight:700;color:var(--text2);letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--text2);display:inline-block;flex-shrink:0;"></span>
+        기타 개별 이슈
+        <span style="font-size:11px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace;margin-left:4px;">2종목</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--text2);"></span>엔씨소프트 <span style="font-weight:400;color:var(--up);">25만원 돌파</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">엔씨소프트가 자사주 지급 결정을 발표하고 실적 반등 기대감까지 겹치며 25만원 선을 돌파하는 강세를 보였다. 자사주 지급은 주주환원 강화 신호로 시장에 긍정적으로 작용하며, 기존 주주들에게는 실질적인 가치 분배 효과가 있다. 엔씨소프트는 최근 신작 게임 출시 이후 초기 사용자 반응이 양호하다는 평가를 받고 있으며, 2026년 실적이 전년 대비 뚜렷한 반등세를 보일 것이라는 증권가 전망이 나오고 있다. 글로벌 PC·모바일 게임 시장에서의 경쟁력 회복 여부가 핵심이며, 특히 중국·동남아 시장에서의 신작 흥행 여부가 추가 상승 여력을 결정할 것으로 보인다. 밸류에이션 측면에서도 게임 섹터 평균 대비 저평가 구간에 있다는 분석이 매수를 유인하고 있다.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot" style="background:var(--text2);"></span>성신양회 <span style="font-weight:400;color:var(--up);">급등</span></div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.9;">새 정부가 행정수도 이전의 일환으로 세종특별자치시 집무실 신속 추진을 공식화하면서 성신양회가 충청권 최대 시멘트 생산기지 보유 기업으로 직접 수혜주에 이름을 올렸다. 세종시 집무실 건립과 연계된 대규모 인프라 확장은 충청권 건설 수요를 크게 자극할 것이며, 인근에 대형 생산 공장을 보유한 성신양회는 운송 비용 절감과 납기 속도 면에서 경쟁 우위를 갖는다. 이미 기록적인 저평가(PBR 0.42배) 상태에서 호재가 겹치며 단기 수급이 폭발했고, 같은 날 두 차례 VI가 발동될 정도로 매수세가 집중됐다. 건설경기 회복 사이클과 정부 정책 모멘텀이 맞물린 흔치 않은 사례로, 시멘트 업종 전반에도 긍정적인 파급 효과가 예상된다. 다만 단기 급등 이후 차익 실현 매물 출회 가능성도 함께 고려해야 한다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="flow_data.js"></script>
+<script src="daily_db.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function showPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function drawDonut(id, data, colors) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const total = data.reduce((a,b)=>a+b,0);
+  let start = -Math.PI/2;
+  const cx=canvas.width/2, cy=canvas.height/2, r=62, ir=42;
+  data.forEach((val,i)=>{
+    const angle=(val/total)*2*Math.PI;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,r,start,start+angle); ctx.closePath();
+    ctx.fillStyle=colors[i]; ctx.fill(); start+=angle;
+  });
+  ctx.beginPath(); ctx.arc(cx,cy,ir,0,Math.PI*2);
+  ctx.fillStyle='#111318'; ctx.fill();
+}
+drawDonut('kospiChart',[671,199,80],['#ff6b3d','#4a9eff','#2a2e38']);
+drawDonut('kosdaqChart',[1284,327,212],['#4ecb8a','#4a9eff','#2a2e38']);
+
+(function initReportDate(){
+  const input = document.getElementById('report-date');
+  const text = document.getElementById('header-date-text');
+  if (!input || !text) return;
+  const periodBtns = Array.from(document.querySelectorAll('.period-btn'));
+  const editionText = document.querySelector('.header-title p');
+  const PERIOD_KEY = 'reportPeriod';
+  let currentPeriod = 'daily';
+
+  function ymdToDot(ymd){ return ymd.replaceAll('-', '.'); }
+  function ymdToDotNoPad(ymd){
+    const [y,m,d] = ymd.split('-').map(n => String(Number(n)));
+    return `${y}.${m}.${d}`;
+  }
+  function weekdayKor(ymd){
+    const d = new Date(ymd + 'T00:00:00');
+    const w = ['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getDay()];
+    return w;
+  }
+  function addDays(date, days){
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return d;
+  }
+  function toYmd(date){
+    const y = date.getFullYear();
+    const m = String(date.getMonth()+1).padStart(2,'0');
+    const d = String(date.getDate()).padStart(2,'0');
+    return `${y}-${m}-${d}`;
+  }
+  function weekRangeMonFri(ymd){
+    const base = new Date(ymd + 'T00:00:00');
+    const day = base.getDay(); // 0 Sun ... 6 Sat
+    const diffToMon = (day === 0) ? -6 : (1 - day);
+    const mon = addDays(base, diffToMon);
+    const fri = addDays(mon, 4);
+    return [toYmd(mon), toYmd(fri)];
+  }
+  function fmtWeeklyRange(monYmd, friYmd){
+    const [y1,m1,d1] = monYmd.split('-').map(n => Number(n));
+    const [y2,m2,d2] = friYmd.split('-').map(n => Number(n));
+    // 예: 2026. 4. 13 ~ 17
+    if (y1 === y2 && m1 === m2) return `${y1}. ${m1}. ${d1} ~ ${d2}`;
+    if (y1 === y2) return `${y1}. ${m1}. ${d1} ~ ${m2}. ${d2}`;
+    return `${y1}. ${m1}. ${d1} ~ ${y2}. ${m2}. ${d2}`;
+  }
+  function setPeriod(p){
+    const period = (p === 'weekly') ? 'weekly' : 'daily';
+    currentPeriod = period;
+    periodBtns.forEach(b => b.classList.toggle('active', b.dataset.period === period));
+    if (editionText) editionText.textContent = `AI 자동 분석 리포트 · ${period === 'weekly' ? 'Weekly Edition' : 'Daily Edition'}`;
+    try { localStorage.setItem(PERIOD_KEY, period); } catch(e) {}
+    // 기간 변경 시 상단 날짜 표시도 즉시 갱신
+    if (input.value) apply(input.value);
+  }
+  function apply(ymd){
+    if (!ymd) return;
+    if (currentPeriod === 'weekly') {
+      const [mon, fri] = weekRangeMonFri(ymd);
+      const range = fmtWeeklyRange(mon, fri);
+      text.textContent = `${range} · 전일 종가 기준`;
+      document.title = `유길상 PB · 시장 브리핑 ${range}`;
+    } else {
+      const w = weekdayKor(ymd);
+      const dot = ymdToDotNoPad(ymd);
+      text.textContent = `${dot} (${w}) · 전일 종가 기준`;
+      document.title = `유길상 PB · 시장 브리핑 ${dot}`;
+    }
+    try { localStorage.setItem('reportDate', ymd); } catch(e) {}
+    if (typeof window.renderVolumeAndPick === 'function') window.renderVolumeAndPick(ymd);
+  }
+
+  // 초기값: localStorage → title/date text에서 추출
+  let initial = null;
+  try { initial = localStorage.getItem('reportDate'); } catch(e) {}
+  if (!initial) {
+    const m = (text.textContent || '').match(/(\\d{4})\\.(\\d{2})\\.(\\d{2})/);
+    if (m) initial = `${m[1]}-${m[2]}-${m[3]}`;
+  }
+  if (initial) {
+    input.value = initial;
+    apply(initial);
+  }
+
+  // 기간 토글 초기값/이벤트
+  let initialPeriod = 'daily';
+  try { initialPeriod = localStorage.getItem(PERIOD_KEY) || 'daily'; } catch(e) {}
+  setPeriod(initialPeriod);
+  periodBtns.forEach(btn => btn.addEventListener('click', () => setPeriod(btn.dataset.period)));
+
+  input.addEventListener('change', () => apply(input.value));
+
+  // 상단 날짜(텍스트) 클릭 → 달력 열기
+  text.addEventListener('click', () => {
+    try {
+      if (typeof input.showPicker === 'function') input.showPicker();
+      else input.focus();
+    } catch(e) {
+      input.focus();
+    }
+  });
+
+  // 엑셀 업로드(외국인/기관 수급) → FLOW_DATA 갱신 후 수급 탭 렌더
+  const uploadBtn = document.getElementById('upload-xlsx-btn');
+  const xlsxInput = document.getElementById('xlsx-input');
+  function inferType(fileName){
+    const n = (fileName || '').toLowerCase();
+    if (n.includes('외국인') || n.includes('foreign')) return 'foreign';
+    if (n.includes('기관') || n.includes('inst')) return 'institution';
+    if (n.includes('가격') || n.includes('거래량') || n.includes('price') || n.includes('volume')) return 'volume';
+    return null;
+  }
+  function inferDate(fileName){
+    const m = (fileName || '').match(/(20\\d{2})(\\d{2})(\\d{2})/);
+    if (!m) return null;
+    return `${m[1]}-${m[2]}-${m[3]}`;
+  }
+  function normCode(v){
+    if (v == null) return '';
+    const s = String(v).replace(/\\D/g,'');
+    if (!s) return '';
+    return s.padStart(6,'0').slice(-6);
+  }
+  function fmtNetAmtWon(won){
+    const a = Math.round(Number(won) || 0);
+    const sign = a < 0 ? '-' : '';
+    const x = Math.abs(a);
+    const jo = 1e12, eok = 1e8;
+    if (x >= jo) return sign + (x/jo).toFixed(2).replace(/\\.00$/,'') + '조';
+    if (x >= eok) return sign + Math.round(x/eok).toLocaleString('ko-KR') + '억';
+    return sign + x.toLocaleString('ko-KR');
+  }
+  function classifyMarketHeuristic(code){
+    const n = Number(code);
+    if (!Number.isFinite(n)) return 'KOSPI';
+    if (n >= 200000 && n <= 699999) return 'KOSDAQ';
+    return 'KOSPI';
+  }
+  function buildTop10FromSheet(aoa){
+    // 기대 포맷: [종목코드, 종목명, ..., 순매수(원)] (마지막 컬럼)
+    const out = { KOSPI: [], KOSDAQ: [] };
+    for (let r = 1; r < aoa.length; r++){
+      const row = aoa[r] || [];
+      const code = normCode(row[0]);
+      const name = row[1] != null ? String(row[1]).trim() : '';
+      const netAmt = row[row.length - 1];
+      if (!code || !name || netAmt == null || netAmt === '') continue;
+      const mkt = classifyMarketHeuristic(code);
+      out[mkt].push({ code, name, net_amt: Number(netAmt), net_fmt: fmtNetAmtWon(netAmt) });
+    }
+    for (const mkt of ['KOSPI','KOSDAQ']){
+      out[mkt].sort((a,b)=> (b.net_amt||0) - (a.net_amt||0));
+      out[mkt] = out[mkt].slice(0, 10);
+    }
+    return out;
+  }
+  function buildVolumeTop10FromSheet(aoa){
+    // 기대 포맷: [코드, 이름, 시장(KOSPI/KOSDAQ), ..., 종가(4), 등락률%(6), ..., 거래대금(11)]
+    const rows = [];
+    for (let r = 1; r < aoa.length; r++){
+      const row = aoa[r] || [];
+      const code = normCode(row[0]);
+      const name = row[1] != null ? String(row[1]).trim() : '';
+      const market = row[2] != null ? String(row[2]).toUpperCase() : '';
+      const close = Number(row[4]);
+      const pct = Number(row[6]);
+      const amt = Number(row[11]);
+      if (!code || !name || !market || !Number.isFinite(amt)) continue;
+      const mkt = market.includes('KOSDAQ') ? 'KOSDAQ' : 'KOSPI';
+      const pctFmt = (Number.isFinite(pct) ? ((pct >= 0 ? '+' : '') + pct.toFixed(2) + '%') : '+0.00%');
+      rows.push({
+        code, name, market: mkt,
+        close: Number.isFinite(close) ? Math.round(close) : 0,
+        close_fmt: (Number.isFinite(close) ? Math.round(close).toLocaleString('ko-KR') : '0') + '원',
+        pct: Number.isFinite(pct) ? pct : 0,
+        pct_fmt: pctFmt,
+        amt,
+        amt_fmt: fmtNetAmtWon(amt)
+      });
+    }
+    const kospi = rows.filter(x => x.market === 'KOSPI').sort((a,b)=>b.amt-a.amt).slice(0,10);
+    const kosdaq = rows.filter(x => x.market === 'KOSDAQ').sort((a,b)=>b.amt-a.amt).slice(0,10);
+    return { as_of: '', kospi_top10: kospi, kosdaq_top10: kosdaq };
+  }
+  function loadDailyStore(){
+    try { return JSON.parse(localStorage.getItem('DAILY_STORE')||'{}'); } catch(e){ return {}; }
+  }
+  function saveDailyStore(store){
+    try { localStorage.setItem('DAILY_STORE', JSON.stringify(store||{})); } catch(e){}
+  }
+  async function handleXlsx(file){
+    if (!file || typeof XLSX === 'undefined') return;
+    const kind = inferType(file.name);
+    if (!kind) {
+      alert('파일명에 \"외국인\"/\"기관\" 또는 \"가격, 거래량\"이 포함된 엑셀을 업로드해 주세요.');
+      return;
+    }
+    const ab = await file.arrayBuffer();
+    const wb = XLSX.read(ab, { type: 'array' });
+    const sheetName = wb.SheetNames[0];
+    const ws = wb.Sheets[sheetName];
+    const aoa = XLSX.utils.sheet_to_json(ws, { header: 1, raw: true, defval: '' });
+    const asof = inferDate(file.name) || (window.FLOW_DATA && window.FLOW_DATA.as_of) || null;
+    if (!asof) { alert('파일명에서 날짜(YYYYMMDD)를 찾지 못했습니다.'); return; }
+
+    const store = loadDailyStore();
+    store[asof] = store[asof] || {};
+
+    if (kind === 'foreign' || kind === 'institution') {
+      const top = buildTop10FromSheet(aoa);
+      const flow = store[asof].flow || (window.DAILY_DB && window.DAILY_DB[asof] && window.DAILY_DB[asof].flow) || { as_of: asof, foreign:{KOSPI:[],KOSDAQ:[]}, institution:{KOSPI:[],KOSDAQ:[]}, source_note:'' };
+      flow.as_of = asof;
+      flow.source_note = '엑셀 업로드(날짜별 저장) · 수급';
+      if (kind === 'foreign') flow.foreign = top;
+      if (kind === 'institution') flow.institution = top;
+      store[asof].flow = flow;
+      saveDailyStore(store);
+    }
+
+    if (kind === 'volume') {
+      const v = buildVolumeTop10FromSheet(aoa);
+      v.as_of = asof;
+      store[asof].volume = v;
+      saveDailyStore(store);
+    }
+
+    input.value = asof;
+    apply(asof); // 이 안에서 renderVolumeAndPick 호출됨
+
+    const flowBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => (b.getAttribute('onclick')||'').includes("showPanel('flow'")) || document.querySelectorAll('.nav-btn')[0];
+    showPanel('flow', flowBtn);
+  }
+  if (uploadBtn && xlsxInput){
+    uploadBtn.addEventListener('click', () => xlsxInput.click());
+    xlsxInput.addEventListener('change', async () => {
+      const f = xlsxInput.files && xlsxInput.files[0];
+      if (f) await handleXlsx(f);
+      xlsxInput.value = '';
+    });
+  }
+})();
+
+window.renderFlowPanel = function renderFlowPanel(){
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function flowCard(title, dotHtml, items){
+    if (!items || !items.length) return '<div class="card"><div class="card-title">'+dotHtml+esc(title)+'</div><div style="padding:12px;color:var(--text3);font-size:12px;">표시할 종목이 없습니다.</div></div>';
+    var rows = items.map(function(it){
+      return '<div class="stock-row"><div><div class="stock-name">'+esc(it.name)+'</div><div class="stock-mkt">'+esc(it.code)+'</div></div><div style="text-align:right;"><span class="badge-up">'+esc(it.net_fmt)+'</span></div></div>';
+    }).join('');
+    return '<div class="card"><div class="card-title">'+dotHtml+esc(title)+' <span style="font-size:10px;color:var(--text3);font-weight:400;">순매수 TOP 10</span></div>'+rows+'</div>';
+  }
+  var d = typeof window.FLOW_DATA !== 'undefined' ? window.FLOW_DATA : null;
+  var el = document.getElementById('flow-root');
+  var asofEl = document.getElementById('flow-asof');
+  var foot = document.getElementById('flow-foot');
+  if (!el) return;
+  if (!d || !d.foreign || !d.institution) {
+    el.innerHTML = '<div class="card"><div style="padding:16px;color:var(--text3);font-size:13px;">flow_data.js를 불러오지 못했습니다. hs2 폴더에 flow_data.js가 있는지 확인하세요.</div></div>';
+    return;
+  }
+  if (asofEl && d.as_of) asofEl.textContent = d.as_of.replace(/-/g,'.');
+  if (foot && d.source_note) foot.textContent = '※ '+d.source_note+' · 엑셀 갱신 후 python build_flow_data.py 로 flow_data.js 재생성';
+  var dk = '<span class="dot" style="background:var(--up);"></span>';
+  var dq = '<span class="dot" style="background:#4ecb8a;"></span>';
+  el.innerHTML =
+    '<div class="flow-section-title">외국인 순매수 상위</div><div class="grid2">'+
+      flowCard('KOSPI', dk, d.foreign.KOSPI)+flowCard('KOSDAQ', dq, d.foreign.KOSDAQ)+
+    '</div>'+
+    '<div class="flow-section-title">기관 순매수 상위</div><div class="grid2">'+
+      flowCard('KOSPI', dk, d.institution.KOSPI)+flowCard('KOSDAQ', dq, d.institution.KOSDAQ)+
+    '</div>';
+};
+window.renderFlowPanel();
+
+// 날짜별 거래대금/추천/지표 렌더
+window.renderVolumeAndPick = function renderVolumeAndPick(dateYmd){
+  const db = (window.DAILY_DB && window.DAILY_DB[dateYmd]) || null;
+  const stored = (() => { try { return JSON.parse(localStorage.getItem('DAILY_STORE')||'{}'); } catch(e){ return {}; } })();
+  const storedDay = stored && stored[dateYmd] ? stored[dateYmd] : null;
+  const volume = (storedDay && storedDay.volume) || (db && db.volume) || null;
+  const flow = (storedDay && storedDay.flow) || (db && db.flow) || null;
+
+  // flow (수급 탭)
+  if (flow) {
+    window.FLOW_DATA = flow;
+    if (typeof window.renderFlowPanel === 'function') window.renderFlowPanel();
+  }
+
+  if (!volume) return;
+
+  function setMetric(rank, label, name, pctFmt, amtFmt){
+    const el = document.querySelector(`.metric[data-rank=\"${rank}\"]`);
+    if (!el) return;
+    const isUp = (pctFmt || '').trim().startsWith('+');
+    const subColor = isUp ? 'var(--up)' : 'var(--dn)';
+    const badgeClass = isUp ? 'badge-up' : 'badge-dn';
+    el.innerHTML = `<div class=\"metric-label\">${label}</div><div class=\"metric-value\" style=\"font-size:16px;color:var(--text);\">${name}</div><div class=\"metric-sub\" style=\"color:${subColor};\">${pctFmt} · ${amtFmt}</div>`;
+  }
+
+  const kospiTop = volume.kospi_top10 || [];
+  const kosdaqTop = volume.kosdaq_top10 || [];
+  if (kospiTop[0]) setMetric('03', '거래대금 1위', kospiTop[0].name, kospiTop[0].pct_fmt, kospiTop[0].amt_fmt);
+  if (kosdaqTop[0]) setMetric('04', '코스닥 거래대금 1위', kosdaqTop[0].name, kosdaqTop[0].pct_fmt, kosdaqTop[0].amt_fmt);
+
+  // 국내시황 요약(거래대금 상위 10)
+  function replaceStockList(cardTitleIncludes, list){
+    const cards = Array.from(document.querySelectorAll('#panel-overview .card'));
+    const card = cards.find(c => (c.querySelector('.card-title')?.textContent || '').includes(cardTitleIncludes));
+    if (!card) return;
+    // remove existing stock-row elements
+    Array.from(card.querySelectorAll('.stock-row')).forEach(n => n.remove());
+    list.forEach(it => {
+      const isUp = (it.pct_fmt || '').startsWith('+');
+      const badge = `<span class=\"${isUp ? 'badge-up' : 'badge-dn'}\">${it.pct_fmt}</span>`;
+      const row = document.createElement('div');
+      row.className = 'stock-row';
+      row.innerHTML = `<div><div class=\"stock-name\">${it.name}</div><div class=\"stock-mkt\">${it.amt_fmt}</div></div><div style=\"text-align:right;\"><div class=\"stock-price\">${String(it.close).toLocaleString('ko-KR')}</div>${badge}</div>`;
+      card.appendChild(row);
+    });
+  }
+  replaceStockList('코스피 주요 종목', kospiTop);
+  replaceStockList('코스닥 주요 종목', kosdaqTop);
+
+  // 거래대금 탭 bar rows
+  function replaceBarList(cardTitleIncludes, list){
+    const cards = Array.from(document.querySelectorAll('#panel-volume .card'));
+    const card = cards.find(c => (c.querySelector('.card-title')?.textContent || '').includes(cardTitleIncludes));
+    if (!card) return;
+    Array.from(card.querySelectorAll('.bar-row')).forEach(n => n.remove());
+    const maxAmt = list[0]?.amt || 1;
+    list.forEach((it, idx) => {
+      const isUp = (it.pct_fmt || '').startsWith('+');
+      const width = Math.max(6, Math.round((it.amt / maxAmt) * 100));
+      const fillCls = isUp ? 'bar-up' : 'bar-flat';
+      const badge = `<span class=\"${isUp ? 'badge-up' : 'badge-dn'}\">${it.pct_fmt}</span>`;
+      const row = document.createElement('div');
+      row.className = 'bar-row';
+      row.innerHTML = `<div class=\"bar-rank\">${idx+1}</div><div class=\"bar-name\">${it.name}</div><div class=\"bar-track\"><div class=\"bar-fill ${fillCls}\" style=\"width:${width}%;\"></div></div><div class=\"bar-pct\">${badge}</div><div class=\"bar-amount\">${it.amt_fmt}</div>`;
+      card.appendChild(row);
+    });
+  }
+  replaceBarList('KOSPI 거래대금 TOP 10', kospiTop);
+  replaceBarList('KOSDAQ 거래대금 TOP 10', kosdaqTop);
+
+  // AI추천 탭 (각 7개)
+  function replacePick(panelSelector, marketLabel, list){
+    const panel = document.querySelector(panelSelector);
+    if (!panel) return;
+    const cards = Array.from(panel.querySelectorAll('.card'));
+    const card = cards.find(c => (c.querySelector('.card-title')?.textContent || '').includes(marketLabel));
+    if (!card) return;
+    Array.from(card.querySelectorAll('.stock-row')).forEach(n => n.remove());
+    (list || []).slice(0,7).forEach(it => {
+      const isUp = (it.pct_fmt || '').startsWith('+');
+      const badge = `<span class=\"${isUp ? 'badge-up' : 'badge-dn'}\">${it.pct_fmt}</span>`;
+      const row = document.createElement('div');
+      row.className = 'stock-row';
+      row.innerHTML = `<div><div class=\"stock-name\">${it.name}</div><div class=\"stock-mkt\">${marketLabel} · 거래대금 ${it.amt_fmt}</div></div><div style=\"text-align:right;\"><div class=\"stock-price\">${it.close_fmt}</div>${badge}</div>`;
+      card.appendChild(row);
+    });
+  }
+  replacePick('#panel-broker', 'KOSPI', kospiTop);
+  replacePick('#panel-broker', 'KOSDAQ', kosdaqTop);
+};
+
+/* ── 하드코딩 뉴스 데이터 (2026.04.14 실검색 기반) ── */
+const NEWS_DB = {
+  '주성코퍼레이션': [
+    { type:'뉴스', headline:'광전송 AI 수요 수혜주로 급부상', summary:'광전송 솔루션 공급 기업으로 AI 데이터센터 확산에 따른 수요 증가 기대감이 주가를 끌어올렸다는 분석. 통신·네트워킹 산업 호황과 연동된 종목으로 새롭게 부각됨.', date:'2026.04.14' },
+    { type:'뉴스', headline:'코스피 상승률 1위 마감, 거래량 폭증', summary:'4월 14일 코스피 상승률 1위를 기록하며 844만주가 거래됨. 전거래일 대비 532원 오른 2,310원에 마감. 외국인·기관 동반 매수 유입 확인.', date:'2026.04.14' }
+  ],
+  '성신양회': [
+    { type:'뉴스', headline:'PBR 0.42배 저평가 부각, VI 2회 발동', summary:'시멘트 업황 회복 기대감과 PBR 0.42배의 극심한 저평가 인식이 맞물려 단기 매수세가 집중. 동일 거래일 두 차례 VI(변동성완화장치)가 발동될 정도로 수급이 폭발적으로 유입됨.', date:'2026.04.14' },
+    { type:'애널리스트', headline:'2025년 매출 1.2조 성장, 배당 3.6% 유지', summary:'2025년 연결 매출액은 전년 대비 +4.6% 증가한 1조 2,162억원을 기록. 배당수익률 3.60%를 유지하며 저평가 배당주로 재조명. 다만 영업이익은 전년 대비 -18% 감소해 수익성 모니터링 필요.', date:'2026.04.14' }
+  ],
+  '성신양회우': [
+    { type:'뉴스', headline:'모종목 성신양회 상한가 동반 급등', summary:'성신양회(보통주)가 +29.91% 상한가에 근접하며 급등하자 우선주도 동반 급등. 시멘트 업황 회복 기대 및 저평가 인식 매수세 유입.', date:'2026.04.14' },
+    { type:'뉴스', headline:'거래량 전일比 수십 배 급증', summary:'전 거래일 대비 수십 배 이상의 거래량이 유입되며 +27.93% 상승 마감. 우선주 특성상 보통주보다 할인되어 거래되나 동일 모멘텀 적용.', date:'2026.04.14' }
+  ],
+  '와이투솔루션': [
+    { type:'뉴스', headline:'자동화·스마트팩토리 테마 수급 유입', summary:'제조 자동화 및 스마트팩토리 솔루션 관련주로 분류되며 테마 수급이 집중. 시장 전반 상승 분위기와 맞물려 +21.72% 급등 마감.', date:'2026.04.14' },
+    { type:'뉴스', headline:'코스피 상승률 4위 기록', summary:'4월 14일 코스피 상승률 4위를 기록하며 6,670원에 마감. 거래대금 193억원으로 평소 대비 대규모 수급 유입이 확인됨.', date:'2026.04.14' }
+  ],
+  '계룡건설': [
+    { type:'뉴스', headline:'미·이란 휴전 기대, 건설경기 회복 수혜', summary:'미·이란 휴전 협정 기대감에 따른 건설경기 회복 및 지방 SOC 수주 모멘텀이 부각됨. 건설주 전반에 수급이 유입되며 +17.54% 급등.', date:'2026.04.14' },
+    { type:'뉴스', headline:'한·폴란드 방산·인프라 협력 격상 수혜', summary:'한국과 폴란드의 포괄적 전략 동반자 관계 격상으로 동유럽 인프라·방산 협력 확대 기대감이 건설주 전반에 긍정적으로 작용.', date:'2026.04.14' }
+  ],
+  '두산퓨얼셀': [
+    { type:'뉴스', headline:'수소경제 로드맵 가속화 기대감 반영', summary:'정부 수소경제 로드맵 가속화 및 연료전지 발전소 신규 수주 기대감이 부각되며 +15.85% 상승. 글로벌 에너지 전환 가속화 흐름 속 국내 수소 대표주로 재조명.', date:'2026.04.14' },
+    { type:'뉴스', headline:'중동 에너지 리스크로 수소 전환 관심↑', summary:'호르무즈 해협 긴장에 따른 에너지 다변화 필요성이 수소·연료전지 테마에 긍정적으로 작용. 두산퓨얼셀은 국내 연료전지 발전 1위 기업으로 정책 수혜 직접 수혜주.', date:'2026.04.14' }
+  ],
+  '우진플라임': [
+    { type:'뉴스', headline:'플라스틱 사출 장비 수주 기대감', summary:'제조업 회복 분위기 속 플라스틱 사출 성형 장비 수주 모멘텀이 부각. 소형주 특성상 수급 집중 시 변동성이 크게 확대됨.', date:'2026.04.14' },
+    { type:'뉴스', headline:'코스피 상승률 7위, 거래대금 미미', summary:'+15.00% 상승했으나 거래대금 11억원으로 유동성이 낮아 개인 투자자 주도의 단기 급등으로 분석. 지속성에 주의 필요.', date:'2026.04.14' }
+  ],
+  '한솔테크닉스': [
+    { type:'뉴스', headline:'전장 부품·카메라모듈 수요 회복 기대', summary:'전기차 전장 부품 및 카메라모듈 수요 회복 기대감이 주가 상승을 이끌었음. 거래대금 1,062억원으로 시장 내 상당한 주목을 받은 것으로 확인됨.', date:'2026.04.14' },
+    { type:'애널리스트', headline:'IT 부품 모멘텀 강화 분석', summary:'IT 부품 업황 회복과 맞물려 한솔테크닉스의 실적 개선 기대감이 +13.67% 상승 흐름을 뒷받침. 기관 매수세 일부 유입 확인.', date:'2026.04.14' }
+  ],
+  '부국철강': [
+    { type:'뉴스', headline:'철강 업황 회복 기대, 건설 수요 연계', summary:'미·이란 휴전 기대에 따른 건설·인프라 투자 재개 기대가 철강 수요 회복으로 이어질 것이라는 전망이 부각. 거래대금 806억원으로 코스피 내 주목을 받음.', date:'2026.04.14' },
+    { type:'뉴스', headline:'+12.84% 상승 마감, 거래량 급증', summary:'평소 대비 대규모 거래량 유입으로 +12.84% 상승 마감. 시장 전반의 강세와 함께 소재·철강 섹터로 수급이 확산된 흐름.', date:'2026.04.14' }
+  ],
+  '코리아써키트': [
+    { type:'뉴스', headline:'AI 서버 PCB 수요 증가 수혜 기대', summary:'AI 데이터센터 확산에 따른 고다층 인쇄회로기판(PCB) 수요 증가 기대감이 반영. 엔비디아의 광반도체·AI 인프라 투자 발언이 PCB 전방 수요에도 긍정적으로 작용.', date:'2026.04.14' },
+    { type:'뉴스', headline:'코스피 상승률 10위, 거래대금 783억', summary:'거래대금 783억원을 기록하며 +12.50% 상승. AI·반도체 부품 테마의 외연이 PCB 업체까지 확대되는 모습을 보임.', date:'2026.04.14' }
+  ],
+  '루멘스': [
+    { type:'뉴스', headline:'엔비디아 광반도체 발언 수혜, 상한가', summary:'엔비디아 젠슨 황 CEO가 GTC 2026에서 실리콘 포토닉스를 AI 인프라 핵심 기술로 언급한 후 루멘스가 마이크로 LED·광반도체 관련 부품주로 부각되며 상한가 +30.00% 달성.', date:'2026.04.14' },
+    { type:'뉴스', headline:'광반도체 테마 연속 상한가 흐름 지속', summary:'2026년 3월 말 이후 광반도체 테마가 국내 대장주로 급부상하며 루멘스에도 수급이 집중. 거래대금 76억원으로 소형주 대비 이례적인 거래 규모 기록.', date:'2026.04.14' }
+  ],
+  '아이씨에이치': [
+    { type:'뉴스', headline:'광통신·네트워크 장비 테마 편입 급등', summary:'광반도체·광통신 테마 확산 속 아이씨에이치가 관련 장비주로 분류되며 +29.99% 급등. 개인 투자자 수급이 집중되며 상한가 근접 마감.', date:'2026.04.14' },
+    { type:'뉴스', headline:'거래대금 112억, 전일比 수십 배 폭증', summary:'평소 대비 수십 배의 거래량이 유입되며 거래대금 112억원을 기록. 광통신 테마의 2차 수혜주로 편입되며 단기 급등 흐름 나타남.', date:'2026.04.14' }
+  ],
+  '퀄리타스반도체': [
+    { type:'뉴스', headline:'엔비디아 GTC서 인터페이스 IP 수요 폭증', summary:'엔비디아 젠슨 황 CEO가 GTC 2026에서 실리콘 포토닉스를 핵심 기술로 직접 언급. 퀄리타스반도체의 PCIe·UCIe 등 인터페이스 IP 수요 증가 기대감이 즉각 반영되며 +29.98% 급등.', date:'2026.04.14' },
+    { type:'애널리스트', headline:'KB증권 "AI 광케이블·광모듈 수요 현실화"', summary:'KB증권 연구원은 "AI 데이터센터 내 GPU간 통신 및 초고속 전송을 위한 광모듈·전송장비 수요 폭증이 현실화되고 있다"며 퀄리타스반도체 등 관련주 강세를 분석.', date:'2026.04.14' }
+  ],
+  '가온그룹': [
+    { type:'뉴스', headline:'광반도체·AI 인프라 테마 수급 유입', summary:'엔비디아발 광반도체 테마 확산으로 가온그룹에도 수급이 집중되며 +29.97% 급등. 거래대금 198억원으로 평소 대비 대규모 매수세 확인.', date:'2026.04.14' },
+    { type:'뉴스', headline:'AI 데이터센터 관련 사업 모멘텀 부각', summary:'AI 데이터센터 구축 관련 사업 모멘텀이 재조명되며 광반도체 테마 2차 수혜주로 편입. 상한가 근접 마감.', date:'2026.04.14' }
+  ],
+  '에프알텍': [
+    { type:'뉴스', headline:'무선 통신 장비주로 6G 테마 수혜', summary:'정부의 2026년 세계 최초 6G 기술 시연 목표 발표로 무선 통신 장비 관련주가 일제히 부각. 에프알텍이 RF 부품 공급업체로 분류되며 +29.97% 급등.', date:'2026.04.14' },
+    { type:'뉴스', headline:'거래대금 385억, AI·6G 복합 모멘텀', summary:'거래대금 385억원을 기록하며 AI 인프라 및 6G 통신 복합 모멘텀이 주가를 끌어올림. 엔비디아·퀄컴 투자 확대 수혜주로 시장 주목.', date:'2026.04.14' }
+  ],
+  '프럼파스트': [
+    { type:'뉴스', headline:'광통신 부품 관련주로 테마 편입', summary:'광반도체·광통신 테마 확산 속 프럼파스트가 관련 부품주로 편입되며 +29.97% 급등. 거래대금 107억원으로 소형주 대비 이례적인 수급 유입 확인.', date:'2026.04.14' },
+    { type:'뉴스', headline:'단기 상한가 흐름, 변동성 주의', summary:'개인 투자자 주도의 테마 수급으로 단기 급등. 거래대금 규모가 크지 않아 향후 변동성 확대 가능성에 주의가 필요한 종목으로 분류됨.', date:'2026.04.14' }
+  ],
+  '빛샘전자': [
+    { type:'뉴스', headline:'광반도체 마이크로LED 부품주 부각', summary:'엔비디아 젠슨 황의 광반도체 발언 이후 마이크로 LED·광부품 관련주로 빛샘전자가 부각. 거래대금 758억원으로 상당한 수급이 유입되며 +29.96% 급등.', date:'2026.04.14' },
+    { type:'애널리스트', headline:'광반도체 테마 핵심 부품주 분류', summary:'AI 인프라 확산으로 인한 광반도체 수요 폭증 기대감 속 빛샘전자가 핵심 부품 공급사로 분류. 2026년 3월 이후 연속 상한가 흐름을 이어가는 강세 종목으로 분석됨.', date:'2026.04.14' }
+  ],
+  '서울전자통신': [
+    { type:'뉴스', headline:'광통신 네트워크 장비 수요 기대', summary:'광반도체·광통신 테마 확산 속 서울전자통신이 관련 통신 장비주로 분류되며 +29.95% 급등. 거래대금은 14억원으로 소형주 특성상 변동성이 극심하게 나타남.', date:'2026.04.14' },
+    { type:'뉴스', headline:'거래량 급증, 개인 투자자 주도', summary:'평소 대비 대규모 거래량이 유입됐으나 기관·외국인 수급 부재 속 개인 투자자 주도의 단기 급등으로 분석. 상한가 근접 후 차익 실현 주의.', date:'2026.04.14' }
+  ],
+  '사토시홀딩스': [
+    { type:'뉴스', headline:'가상자산·블록체인 테마 연계 급등', summary:'가상자산·블록체인 관련 지주사로 분류된 사토시홀딩스가 시장 전반 상승 분위기와 테마 수급에 힘입어 +29.94% 급등. 거래대금 11억원의 소형주 특성.', date:'2026.04.14' },
+    { type:'뉴스', headline:'코스닥 상승률 9위 기록', summary:'4월 14일 코스닥 상승률 9위를 기록하며 상한가 근접 마감. 단기 수급 집중 흐름으로 지속성 여부는 모니터링이 필요함.', date:'2026.04.14' }
+  ],
+  '아주IB투자': [
+    { type:'뉴스', headline:'야놀자 나스닥 IPO 기대, VC 섹터 강세', summary:'야놀자의 미국 나스닥 상장 추진이 구체화되면서 아주IB투자의 지분 가치 재평가 기대감이 급등을 이끌었음. 거래대금 3,432억원, 거래량 전일 대비 6배 이상 폭증.', date:'2026.04.14' },
+    { type:'뉴스', headline:'모태펀드 1.6조 확대·벤처 40조 목표', summary:'정부가 2026년 모태펀드 출자 규모를 1조 6,000억원으로 대폭 확대하고 연간 벤처 투자 40조원을 목표로 발표. 아주IB투자 등 VC 섹터 전반에 수급이 집중됨.', date:'2026.04.14' }
+  ],
+  'SNT에너지': [
+    { type:'뉴스', headline:'미·이란 휴전 기대로 유가 급락, 에너지주 타격', summary:'트럼프 대통령이 이란이 호르무즈 해협을 개방하는 조건으로 공격 중단에 동의한다고 밝히며 국제 유가가 급락. 에너지 관련주인 SNT에너지가 -9.36%로 코스피 하락률 1위 기록.', date:'2026.04.14' },
+    { type:'뉴스', headline:'반도체·광통신 테마로 수급 이탈', summary:'시장 수급이 반도체·광통신 테마로 집중되면서 에너지 섹터에서 자금이 이탈. 거래대금 478억원으로 평소 대비 높은 매도세가 확인됨.', date:'2026.04.14' }
+  ],
+  '남선알미우': [
+    { type:'뉴스', headline:'모종목 남선알미늄 차익 실현 연동', summary:'남선알미늄(보통주)이 전일 +7.50% 상승 후 차익 실현 매물이 출회되자 우선주 남선알미우도 -7.48% 동반 하락. 수급 이탈 흐름 반영.', date:'2026.04.14' },
+    { type:'뉴스', headline:'유동성 낮은 소형 우선주 낙폭 확대', summary:'거래대금 6억원의 극소형 우선주 특성상 소량의 매도 물량에도 낙폭이 크게 확대됨. 보통주 대비 할인 폭 축소 이후 되돌림 매물 집중.', date:'2026.04.14' }
+  ],
+  '대한해운': [
+    { type:'뉴스', headline:'미·이란 긴장 완화로 해운 테마 차익 실현', summary:'트럼프 대통령이 이란과 협상 중단 합의 신호를 보내면서 호르무즈 해협 봉쇄 우려가 완화됨. 그간 급등했던 해운 테마에 차익 실현 매물이 집중되며 -7.34% 하락.', date:'2026.04.14' },
+    { type:'애널리스트', headline:'신한투자증권 목표주가 3,000원 신규 제시', summary:'신한투자증권은 4월 7일 대한해운에 대해 목표주가 3,000원을 신규 제시. 2026년 영업이익 2,200~2,220억원 전망. LNG 운반선 40% 비중의 안정적 수익 구조 평가.', date:'2026.04.07' }
+  ],
+  'SGC에너지': [
+    { type:'뉴스', headline:'유가 급락·중동 긴장 완화에 하락', summary:'미·이란 휴전 기대감으로 국제 유가가 급락하며 SGC에너지 등 에너지 관련주가 일제히 하락. -6.38%를 기록하며 코스피 하락률 4위 마감.', date:'2026.04.14' },
+    { type:'뉴스', headline:'에너지 섹터 전반 수급 이탈 지속', summary:'광반도체·AI 테마로 시장 수급이 집중되며 에너지·소재 섹터에서 자금 이탈이 지속. 거래대금 108억원으로 매도세가 확인됨.', date:'2026.04.14' }
+  ],
+  '흥아해운': [
+    { type:'뉴스', headline:'호르무즈 개방 합의로 해운 테마 붕괴', summary:'트럼프 대통령이 이란의 호르무즈 해협 개방 조건으로 공격 중단에 동의한다고 밝히며 해운 운임 상승 기대감이 소멸. 그간 급등했던 흥아해운에 차익 실현 매물이 집중됨.', date:'2026.04.14' },
+    { type:'뉴스', headline:'3월 18% 급등 이후 되돌림 본격화', summary:'2026년 2~3월 호르무즈 해협 봉쇄 우려로 흥아해운은 수주 만에 50% 이상 급등했으나 지정학적 긴장 완화 신호에 차익 실현이 본격화됨. 해운주 전반 동반 하락.', date:'2026.04.14' }
+  ],
+  '엑시온그룹': [
+    { type:'뉴스', headline:'전일 급등 후 차익 실현 매물 폭탄', summary:'뚜렷한 개별 공시 없이 전일 급등에 따른 단기 차익 실현 매물이 집중되며 -17.81%로 코스닥 하락률 1위 기록. 소형주 특성상 변동성이 극심하게 나타남.', date:'2026.04.14' },
+    { type:'뉴스', headline:'거래대금 14억, 기관·외인 수급 부재', summary:'거래대금 14억원으로 기관·외국인 수급이 없는 개인 주도 종목. 단기 급등 후 매수자 부재로 하락 폭이 확대됨. 수급 공백 구간 진입으로 변동성 지속 주의.', date:'2026.04.14' }
+  ],
+  '대동금속': [
+    { type:'뉴스', headline:'실적 불확실성 및 차익 실현 매도', summary:'철강·금속 업황 회복 기대로 일부 상승했던 대동금속이 실적 불확실성과 차익 실현 매물에 -9.14% 하락. 거래대금 44억원으로 기관 매도세 유입 확인.', date:'2026.04.14' },
+    { type:'뉴스', headline:'소재 섹터 수급 이탈 영향', summary:'시장 수급이 반도체·광통신 테마로 집중되며 철강·소재 섹터에서 자금 이탈. 대동금속은 뚜렷한 개별 호재 없이 섹터 약세에 동반 하락함.', date:'2026.04.14' }
+  ],
+  '씨어스테크놀로지': [
+    { type:'뉴스', headline:'단기 급등 후 수급 이탈로 하락', summary:'전일 급등에 따른 차익 실현 매물이 집중되며 -9.04% 하락. 거래대금 265억원으로 기관 매도세가 유입된 것으로 파악됨. 광반도체 테마 수급이 대형주 위주로 재편됨.', date:'2026.04.14' },
+    { type:'뉴스', headline:'광통신 테마 소외, 대형주로 수급 이동', summary:'엔비디아발 광반도체 테마 수급이 퀄리타스반도체, 빛샘전자 등 핵심주로 집중되면서 씨어스테크놀로지 등 중소형 관련주에서 자금 이탈이 나타남.', date:'2026.04.14' }
+  ],
+  '피노': [
+    { type:'뉴스', headline:'전일 급등 차익 실현, 뚜렷한 호재 소멸', summary:'전일 급등에 따른 차익 실현이 본격화되며 -8.84% 하락. 뚜렷한 추가 상승 모멘텀 부재 속 매물이 출회됨. 거래대금 315억원으로 기관 매도세 확인.', date:'2026.04.14' },
+    { type:'뉴스', headline:'바이오·헬스케어 섹터 수급 약화', summary:'시장 자금이 반도체·광통신 테마로 집중되며 바이오·헬스케어 관련 섹터에서 자금이 빠져나감. 피노는 수급 이탈 흐름 속 하락 마감.', date:'2026.04.14' }
+  ],
+  '시선AI': [
+    { type:'뉴스', headline:'AI 비전 테마 차익 실현 매물 집중', summary:'AI 비전·머신비전 관련주로 분류된 시선AI가 전일 상승 후 차익 실현으로 -8.61% 하락. 거래대금 32억원으로 기관 수급 부재 속 개인 매도세 집중.', date:'2026.04.14' },
+    { type:'뉴스', headline:'AI 테마 대형주 쏠림에 소형주 이탈', summary:'SK하이닉스, 삼성전자 등 AI 대형주로 수급이 집중되며 소형 AI 테마주에서 자금 이탈 현상이 나타남. 단기 조정 흐름으로 분석됨.', date:'2026.04.14' }
+  ]
+};
+
+/* ── NEWS LOADER (하드코딩 버전) ── */
+function loadNews(rowEl, name, market, change, price, vol) {
+  document.querySelectorAll('.stock-row.clickable').forEach(r => r.classList.remove('selected'));
+  rowEl.classList.add('selected');
+
+  const isUp = change.startsWith('+');
+  document.getElementById('news-stock-bar').style.display = 'flex';
+  document.getElementById('news-stock-name').textContent = name;
+  document.getElementById('news-stock-meta').innerHTML =
+    `${market} &nbsp;·&nbsp; ${price} &nbsp;·&nbsp; <span style="color:${isUp?'var(--up)':'var(--dn)'}">${change}</span> &nbsp;·&nbsp; ${vol}`;
+
+  document.getElementById('news-panel-el').classList.add('lit');
+
+  const body = document.getElementById('news-body');
+  const items = NEWS_DB[name];
+
+  if (!items) {
+    body.innerHTML = `<div class="news-error"><strong>데이터 없음</strong>해당 종목의 뉴스 데이터가 준비되지 않았습니다.</div>`;
+    return;
+  }
+
+  const tagClass = { '뉴스':'tag-news', '공시':'tag-disc', '애널리스트':'tag-analyst' };
+  body.innerHTML = items.map(item => `
+    <div class="news-item">
+      <span class="news-tag ${tagClass[item.type]||'tag-news'}">${item.type}</span>
+      <div class="news-headline">${item.headline}</div>
+      <div class="news-summary">${item.summary}</div>
+      <div class="news-date">${item.date}</div>
+    </div>`).join('');
+}
+</script>
+</body>
+</html>
